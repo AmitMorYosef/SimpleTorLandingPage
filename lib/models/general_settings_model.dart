@@ -1,13 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:currency_picker/currency_picker.dart';
-import 'package:simple_tor_web/models/product_model.dart';
-import 'package:simple_tor_web/models/update_model.dart';
-import 'package:simple_tor_web/services/enums.dart';
+import 'package:management_system_app/models/product_model.dart';
+import 'package:management_system_app/models/update_model.dart';
+
+import '../app_const/business_types.dart';
+import '../app_const/display.dart';
+import '../app_const/purchases.dart';
+import 'currency_model.dart';
 
 class GeneralSettingsModel {
   BusinessesTypes businesseType = BusinessesTypes.other;
   int changingImagesSwapSeconds = 6;
-  late Currency currency;
+  late CurrencyModel currency;
   bool notifyOnNewCustomer = false;
   String shopPhone = "",
       ownersName = "",
@@ -22,6 +25,7 @@ class GeneralSettingsModel {
       workersProductsId = "",
       pendingProductId = "",
       fontName = "",
+      storyTitle = "",
       productId = "";
 
   Themes? theme;
@@ -59,7 +63,7 @@ class GeneralSettingsModel {
   GeneralSettingsModel.fromJson(json) {
     theme = themeFromStr[json['theme']]!;
     if (json["currency"] != null) {
-      currency = Currency.from(json: json["currency"]);
+      currency = CurrencyModel.from(json: json["currency"]);
     }
     previewDoc = json['previewDoc'];
     workersProductsId = json['workersProductsId'] ?? "";
@@ -78,7 +82,7 @@ class GeneralSettingsModel {
     pendingProductId = json["pendingProductId"] ?? "";
     changingImagesSwapSeconds = json['changingImagesSwapSeconds'] ?? 6;
     businesseType =
-        businessTypeFromStr[json['businesseType']] ?? BusinessesTypes.barber;
+        businessTypeFromStr[json['businesseType']] ?? BusinessesTypes.other;
     shopIconUrl = json["shopIcon"];
     instagramAccount = json["instagramAccount"];
     adress = json["adress"];

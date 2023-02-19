@@ -1,0 +1,16 @@
+make sure that:
+- env set to production
+- client is on regular loggin (isLoggedIn && getUserPhone)
+- logger set to error mode
+- check purchases is correctly init
+- isActive business is correct
+- workerAmount is coorecr
+- bump up the build number
+- shut down the payment page
+
+
+
+
+- onluck business all -> permission for 2 businesses
+
+- onlock business2 all -> permission for 2 businesses

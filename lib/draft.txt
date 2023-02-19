@@ -1,0 +1,41 @@
+
+<meta-data
+            android:name="firebase_messaging_auto_init_enabled"
+            android:value="false" />
+            <meta-data
+                android:name="firebase_analytics_collection_enabled"
+                android:value="false" />
+            <!-- [START fcm_default_icon] -->
+            <!-- Set custom default icon. This is used when no icon is set for incoming notification messages. -->
+            <meta-data
+                android:name="com.google.firebase.messaging.default_notification_icon"
+                android:resource="@mipmap/ic_launcher" />
+            <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+                notification message. -->
+            <!-- meta-data
+                android:name="com.google.firebase.messaging.default_notification_color"
+                android:resource="@color/colorAccent" / -->
+            <!-- [END fcm_default_icon] -->
+            <!-- [START fcm_default_channel] -->
+            <meta-data
+                android:name="com.google.firebase.messaging.default_notification_channel_id"
+                android:value="firebase_notifications_channel_id" />
+            <!-- [END fcm_default_channel] -->
+
+
+anonymous user - > 
+ - login anonymously only for booking 
+ - save the collection on the device
+ - load the anonymous data at the begining (db open for reading even for not logged in users)
+ - save the user not only on the firebase auth but on the devite either (save name, phone, doc)
+
+for user UX ->
+ - save name + phone on device too
+ - show the user the last option to use or use another - in any case -> data on the same doc (doc per device)
+
+when user enter not logged in -> 
+ - able to see all the device bookings (no matter which phone order the booking)
+ - able to order - if already saved account -> option to choose it for ordering
+ - important -> explanation for users that the data is saved on the device only and not on our servers can be deleted
+   by clean data
+ - consider the option to delete the cerdetionals from the device from inside the app.

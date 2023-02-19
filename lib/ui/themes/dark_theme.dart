@@ -24,7 +24,7 @@ final backgroundColor = Color(0xFF1F1F29);
 final surface = Color(0xff252530);
 final cards = Color(0xFF4E4E61).withOpacity(.2);
 
-ThemeData darkTheme = ThemeData(
+ThemeData DarkTheme = ThemeData(
     colorScheme: ColorScheme(
         error: Color.fromARGB(255, 157, 40, 40),
         onError: Color.fromARGB(255, 136, 34, 34),

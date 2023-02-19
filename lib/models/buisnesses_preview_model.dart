@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:simple_tor_web/models/preview_model.dart';
+import 'package:management_system_app/models/preview_model.dart';
 
 class BuisnessesPreview {
   late Map<String, Preview> buisnesses = {};

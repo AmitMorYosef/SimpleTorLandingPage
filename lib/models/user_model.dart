@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:simple_tor_web/consts.dart';
-import 'package:simple_tor_web/models/bank_details.dart';
-import 'package:simple_tor_web/models/notification_topic.dart';
-import 'package:simple_tor_web/models/preview_model.dart';
+import 'package:management_system_app/models/bank_details.dart';
+import 'package:management_system_app/models/notification_topic.dart';
+import 'package:management_system_app/models/preview_model.dart';
 
-import '../services/enums.dart';
+import '../app_const/gender.dart';
+import '../app_const/limitations.dart';
+import '../app_const/notification.dart';
 import 'booking_model.dart';
 
 class User {

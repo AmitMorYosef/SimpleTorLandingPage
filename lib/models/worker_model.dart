@@ -2,15 +2,15 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-import 'package:simple_tor_web/models/booking_model.dart';
-import 'package:simple_tor_web/models/break_model.dart';
-import 'package:simple_tor_web/models/price_model.dart';
-import 'package:simple_tor_web/models/treatment_model.dart';
-import 'package:simple_tor_web/services/enums.dart';
-import 'package:simple_tor_web/utlis/times_utlis.dart';
+import 'package:management_system_app/models/booking_model.dart';
+import 'package:management_system_app/models/break_model.dart';
+import 'package:management_system_app/models/price_model.dart';
+import 'package:management_system_app/models/treatment_model.dart';
+import 'package:management_system_app/utlis/times_utlis.dart';
 
-import '../providers/settings_provider.dart';
-import '../providers/worker_provider.dart';
+import '../app_const/gender.dart';
+import '../app_const/worker_scedule.dart';
+import '../app_statics.dart/worker_data.dart';
 
 class WorkerModel {
   int daysToAllowBookings = 7;
@@ -19,6 +19,7 @@ class WorkerModel {
   String profileImg = "";
   String currentFcm = "";
   String ewallet = "";
+  bool notifyOnWaitingListEvents = true;
   String payment_currency = "";
   List<Religion> religions = [];
   bool closeScheduleOnHolidays = false;
@@ -77,6 +78,7 @@ class WorkerModel {
     lastCleanDate = workerJson['lastCleanDate'];
     gender = genderFromStr[workerJson['gender']]!;
     name = workerJson['name'];
+    notifyOnWaitingListEvents = workerJson["notifyOnWaitingListEvents"] ?? true;
     saveData = workerJson['saveData'] ?? true;
     ewallet = workerJson["ewallet"] ?? "";
     lastDeleteBookingsDataDay = workerJson["lastDeleteBookingsDataDay"] ?? "";
@@ -135,6 +137,7 @@ class WorkerModel {
         religions.add(religionFromStr[religion]!);
       });
     }
+    notifyOnWaitingListEvents = workerJson["notifyOnWaitingListEvents"] ?? true;
     closeScheduleOnHolidays = workerJson["closeScheduleOnHolidays"] ?? false;
     if (workerJson["weekendDays"] != null) {
       weekendDays = [];
@@ -223,14 +226,8 @@ class WorkerModel {
   void initDetails() {
     generalBookingsCount = 0;
     passedBookingsCount = 0;
-    passedMoneyAmount = {
-      SettingsProvider.settings.currency.code:
-          Price(amount: "0", currency: SettingsProvider.settings.currency)
-    };
-    generalMoneyAmount = {
-      SettingsProvider.settings.currency.code:
-          Price(amount: "0", currency: SettingsProvider.settings.currency)
-    };
+    passedMoneyAmount = {};
+    generalMoneyAmount = {};
   }
 
   void setBookingsObjects(
@@ -239,7 +236,7 @@ class WorkerModel {
       the bookingsObjects collection*/
     bookingObjects[dateString] = {};
     initDetails();
-    WorkerProvider.monthlyBookingsData[dateString] =
+    WorkerData.monthlyBookingsData[dateString] =
         bookingObjects[dateString] ?? {}; // update the cache also
     bookingsTime[dateString] = {};
     bookingsObjectsJson.forEach((bookingId, bookingJson) {
@@ -340,6 +337,7 @@ class WorkerModel {
       data['religions'].add(religionToStr[religion]);
     });
     data['closeScheduleOnHolidays'] = closeScheduleOnHolidays;
+    data['notifyOnWaitingListEvents'] = notifyOnWaitingListEvents;
     data['weekendDays'] = weekendDays;
     data['gender'] = genderToStr[gender];
     data['onHoldMinutes'] = onHoldMinutes;

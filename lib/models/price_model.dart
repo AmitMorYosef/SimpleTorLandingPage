@@ -1,9 +1,10 @@
-import 'package:currency_picker/currency_picker.dart';
 import 'package:intl/intl.dart';
+
+import 'currency_model.dart';
 
 class Price {
   double amount = 0.00;
-  Currency? currency;
+  CurrencyModel? currency;
   Price({required String amount, required this.currency}) {
     this.amount = double.tryParse(amount) ?? 00.00;
   }
@@ -18,7 +19,7 @@ class Price {
   Price.fromJson(Map<String, dynamic> json) {
     amount =
         json["amount"] is double ? json["amount"] : json["amount"].toDouble();
-    currency = Currency.from(json: json["currency"]);
+    currency = CurrencyModel.from(json: json["currency"]);
   }
 
   void add(Price anotherPrice) {
@@ -29,8 +30,6 @@ class Price {
   String toString() {
     final oCcy = new NumberFormat("#,##0.00");
 
-    return currency!.symbolOnLeft
-        ? "${oCcy.format(amount)}${currency!.symbol}"
-        : "${currency!.symbol}${oCcy.format(amount)}";
+    return "${oCcy.format(amount)}${currency!.symbol}";
   }
 }

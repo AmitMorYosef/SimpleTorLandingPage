@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:simple_tor_web/services/enums.dart';
+import '../app_const/business_types.dart';
 
 class Preview {
   late String address;
