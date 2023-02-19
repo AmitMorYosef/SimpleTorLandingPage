@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/app_const/app_sizes.dart';
-import 'package:management_system_app/app_const/gender.dart';
-import 'package:management_system_app/utlis/image_utlis.dart';
+import 'package:simple_tor_web/app_const/app_sizes.dart';
+import 'package:simple_tor_web/app_const/gender.dart';
+import 'package:simple_tor_web/utlis/image_utlis.dart';
 
 import '../../../../app_const/resources.dart';
 import '../../../../app_statics.dart/settings_data.dart';

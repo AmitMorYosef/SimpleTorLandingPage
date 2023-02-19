@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/models/product_model.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_container.dart';
-import 'package:management_system_app/ui/pages/product_page/product.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/models/product_model.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_container.dart';
+import 'package:simple_tor_web/ui/pages/product_page/product.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../app_const/app_sizes.dart';
 import '../helpers/fonts_helper.dart';

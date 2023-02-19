@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/helpers/fonts_helper.dart';
+import 'package:simple_tor_web/ui/helpers/fonts_helper.dart';
 
 import '../../../../app_const/app_sizes.dart';
 import '../../../../app_statics.dart/settings_data.dart';

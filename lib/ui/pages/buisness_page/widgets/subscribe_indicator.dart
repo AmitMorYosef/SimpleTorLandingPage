@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/providers/user_provider.dart';
-import 'package:management_system_app/ui/general_widgets/dialogs/genral_dialog.dart';
-import 'package:management_system_app/ui/general_widgets/loading_widgets/loading_button.dart';
-import 'package:management_system_app/utlis/notifications_utlis.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_tor_web/providers/user_provider.dart';
+import 'package:simple_tor_web/ui/general_widgets/dialogs/genral_dialog.dart';
+import 'package:simple_tor_web/ui/general_widgets/loading_widgets/loading_button.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../../app_const/notification.dart';
 import '../../../../app_statics.dart/settings_data.dart';
@@ -54,7 +53,7 @@ class SubscribeIndicator extends StatelessWidget {
                       child: Text(translate("no"))),
                   TextButton(
                       onPressed: (() {
-                        changeAllowNotificationsStatus(context, true);
+                        //changeAllowNotificationsStatus(context, true);
                         Navigator.pop(context);
                       }),
                       child: Text(translate("yes"))),
@@ -65,25 +64,30 @@ class SubscribeIndicator extends StatelessWidget {
             }
           }
           checkWidget.load!(
-            startState:
-                isSub() ? subIndicator(context) : unSubIndicator(context),
-            endState: isSub() ? unSubIndicator(context) : subIndicator(context),
-            future: () => isSub()
-                ? userProvider.unSubNotification(
-                    topicId: NotificationTopic(
-                      imageUrl: SettingsData.settings.shopIconUrl,
-                      businessName: SettingsData.settings.shopName,
-                      businessId: SettingsData.appCollection,
-                    ).toTopicStr(),
-                    sort: NotifySorts.buisness)
-                : userProvider.subToNotification(
-                    notificationTopicObject: NotificationTopic(
-                      imageUrl: SettingsData.settings.shopIconUrl,
-                      businessName: SettingsData.settings.shopName,
-                      businessId: SettingsData.appCollection,
-                    ),
-                    sort: NotifySorts.buisness),
-          );
+              startState:
+                  isSub() ? subIndicator(context) : unSubIndicator(context),
+              endState:
+                  isSub() ? unSubIndicator(context) : subIndicator(context),
+              future: () async {
+                return true;
+              }
+
+              // isSub()
+              //     ? userProvider.unSubNotification(
+              //         topicId: NotificationTopic(
+              //           imageUrl: SettingsData.settings.shopIconUrl,
+              //           businessName: SettingsData.settings.shopName,
+              //           businessId: SettingsData.appCollection,
+              //         ).toTopicStr(),
+              //         sort: NotifySorts.buisness)
+              //     : userProvider.subToNotification(
+              //         notificationTopicObject: NotificationTopic(
+              //           imageUrl: SettingsData.settings.shopIconUrl,
+              //           businessName: SettingsData.settings.shopName,
+              //           businessId: SettingsData.appCollection,
+              //         ),
+              //         sort: NotifySorts.buisness),
+              );
         },
         child: checkWidget);
   }

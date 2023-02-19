@@ -162,6 +162,8 @@ dependencies:
   multi_select_flutter: ^4.1.3
   # related to remote config
   firebase_analytics: ^10.1.1
+  #dropdown search
+  dropdown_search: ^5.0.5
 
   
 dev_dependencies:
@@ -340,7 +342,6 @@ flutter:
   assets:
     - resources/language/en.json
     - resources/language/he.json
-    - google_fonts/
     - assets/
     
 
@@ -355,18 +356,8 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts: 
-    - family: "Inter"
-      fonts: 
-        - asset: "fonts/Inter-regular.ttf"
-          style: "normal"
-          weight: 400
-        - asset: "fonts/Inter-500.ttf"
-          style: "normal"
-          weight: 500
-        - asset: "fonts/Inter-700.ttf"
-          style: "normal"
-          weight: 700
+  
+   
 #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

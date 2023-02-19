@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../app_const/resources.dart';
 import '../app_statics.dart/settings_data.dart';

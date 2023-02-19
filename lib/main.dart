@@ -3,17 +3,16 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:management_system_app/app_statics.dart/general_data.dart';
-import 'package:management_system_app/providers/language_provider.dart';
-import 'package:management_system_app/providers/login_provider.dart';
-import 'package:management_system_app/providers/theme_provider.dart';
-import 'package:management_system_app/services/external_services/firebase_notifications.dart';
-import 'package:management_system_app/services/in_app_services.dart/notification_api.dart';
-import 'package:management_system_app/ui/load_app.dart' deferred as appLoader;
-import 'package:management_system_app/ui/ui_manager.dart';
-import 'package:management_system_app/utlis/general_utlis.dart';
-import 'package:management_system_app/web_middle_page.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_tor_web/app_statics.dart/general_data.dart';
+import 'package:simple_tor_web/providers/language_provider.dart';
+import 'package:simple_tor_web/providers/login_provider.dart';
+import 'package:simple_tor_web/services/external_services/firebase_notifications.dart';
+import 'package:simple_tor_web/services/in_app_services.dart/notification_api.dart';
+import 'package:simple_tor_web/ui/load_app.dart' deferred as appLoader;
+import 'package:simple_tor_web/ui/ui_manager.dart';
+import 'package:simple_tor_web/utlis/general_utlis.dart';
+import 'package:simple_tor_web/web_middle_page.dart';
 
 import 'app_const/app_configurations.dart';
 import 'app_const/application_general.dart';
@@ -23,7 +22,6 @@ import 'app_const/platform.dart';
 import 'app_const/resources.dart';
 import 'app_statics.dart/language_data.dart';
 import 'app_statics.dart/settings_data.dart';
-import 'app_statics.dart/subscription_data.dart';
 import 'app_statics.dart/theme_data.dart';
 import 'firebase_options.dart';
 
@@ -77,14 +75,10 @@ Future<void> loadServices() async {
   preventRotate();
   //initilize the notification
   NotificationApi.init();
-  // initial the purchase service
-  await SubscriptionData.initPurchasesServer();
   // initialize firebase notifications
   await FirebaseNotifications.initialService();
   //firebase notifications init
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  // load the last theme
-  await AppThemeData.loadSavedTheme();
   // load the app language
   await LanguageData.loadSavedLanguage();
   overLaysHandling();
@@ -288,8 +282,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     MyApp.mainContext = context;
     LogginProvider logginProvider = context.watch<LogginProvider>();
-    //eventsChecker();
-    context.watch<ThemeProvider>();
     // watch the languge - if changeing the the main re-build
     context.watch<LanguageProvider>();
     UiManager.updateUi(
@@ -335,8 +327,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:flutter/material.dart';
-// import 'package:management_system_app/firebase_options.dart';
-// import 'package:management_system_app/web_middle_page.dart';
+// import 'package:simple_tor_web/firebase_options.dart';
+// import 'package:simple_tor_web/web_middle_page.dart';
 // import 'package:provider/provider.dart';
 
 // import 'app_const/app_configurations.dart';

@@ -1,10 +1,9 @@
 import 'dart:math';
 
 import 'package:intl/intl.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/models/break_model.dart';
-import 'package:management_system_app/models/worker_model.dart';
-import 'package:management_system_app/ui/pages/worker_schedule_page/widgets/schedule_list.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/models/break_model.dart';
+import 'package:simple_tor_web/models/worker_model.dart';
 
 import '../app_const/worker_scedule.dart';
 import '../models/booking_model.dart';
@@ -474,18 +473,18 @@ Booking getFakeBookingFromTime(String day, String start, String end) {
     };
 }
 
-Map<DateTime, BreakModel> getTodayBreaks(
-    String day, Map<String, BreakModel> breaks) {
-  Map<DateTime, BreakModel> todayBreaks = {};
-  breaks.forEach((key, value) {
-    if (value.day == day) {
-      /*detemind when every event happen - used when worker wants to add a break*/
-      ScheduleList.eventsTimes.add(DateFormat('HH:mm').parse(value.start));
-      todayBreaks[DateFormat('HH:mm').parse(value.start)] = value;
-    }
-  });
-  return todayBreaks;
-}
+// Map<DateTime, BreakModel> getTodayBreaks(
+//     String day, Map<String, BreakModel> breaks) {
+//   Map<DateTime, BreakModel> todayBreaks = {};
+//   breaks.forEach((key, value) {
+//     if (value.day == day) {
+//       /*detemind when every event happen - used when worker wants to add a break*/
+//       ScheduleList.eventsTimes.add(DateFormat('HH:mm').parse(value.start));
+//       todayBreaks[DateFormat('HH:mm').parse(value.start)] = value;
+//     }
+//   });
+//   return todayBreaks;
+// }
 
 String addDurationFromDateString(String date, Duration duration) {
   final dateObj = DateFormat("HH:mm").parse(date).add(duration);

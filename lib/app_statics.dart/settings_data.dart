@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:management_system_app/app_const/app_sizes.dart';
-import 'package:management_system_app/app_const/db.dart';
-import 'package:management_system_app/app_statics.dart/user_data.dart';
-import 'package:management_system_app/app_statics.dart/worker_data.dart';
-import 'package:management_system_app/services/clients/firebase_real_time_client.dart';
-import 'package:management_system_app/services/clients/firebase_storage_client.dart';
-import 'package:management_system_app/services/clients/firestore_client.dart';
-import 'package:management_system_app/services/clients/secured_storage_client.dart';
-import 'package:management_system_app/utlis/general_utlis.dart';
+import 'package:simple_tor_web/app_const/app_sizes.dart';
+import 'package:simple_tor_web/app_const/db.dart';
+import 'package:simple_tor_web/app_statics.dart/user_data.dart';
+import 'package:simple_tor_web/app_statics.dart/worker_data.dart';
+import 'package:simple_tor_web/services/clients/firebase_real_time_client.dart';
+import 'package:simple_tor_web/services/clients/firebase_storage_client.dart';
+import 'package:simple_tor_web/services/clients/firestore_client.dart';
+import 'package:simple_tor_web/services/clients/secured_storage_client.dart';
+import 'package:simple_tor_web/utlis/general_utlis.dart';
 
 import '../app_const/application_general.dart';
 import '../app_const/device_keys.dart';
@@ -34,12 +34,11 @@ import '../ui/pages/buisness_page/buisness.dart';
 import '../ui/pages/buisness_page/widgets/story.dart';
 import '../ui/ui_manager.dart';
 import '../utlis/image_utlis.dart';
-import '../utlis/subscription_utils.dart';
 import 'general_data.dart';
 
 class SettingsData {
   static String appCollection =
-      ''; // hold the current buisness collection reference
+      '972-504040624--e6b8f8e0-a7b3-11ed-894b-dda94c48fa31'; // hold the current buisness collection reference
   static bool activeBusiness = true;
   static SubType businessSubtype = SubType.trial;
   static List<String> developers = [];
@@ -163,9 +162,6 @@ class SettingsData {
             BookingProvider.workers[workerObj.phone] = workerObj;
           });
       });
-
-      eligibleWorkerAmount =
-          eligibleWorkersAmount(productId: settings.workersProductsId);
 
       businessSubtype = subTypeFromProductId(settings.productId, buisnessId);
 
@@ -381,15 +377,6 @@ class SettingsData {
       passedTheLimit.add(BuisnessLimitations.storyPhotos);
     }
     return passedTheLimit;
-  }
-
-  static void setEligibleWorkerAmount(String productId) async {
-    eligibleWorkerAmount = eligibleWorkersAmount(productId: productId);
-    if (eligibleWorkerAmount >= workers.length - 1 &&
-        limitionPassed.contains(BuisnessLimitations.workers)) {
-      limitionPassed.remove(BuisnessLimitations.workers);
-    }
-    UiManager.insertUpdate(Providers.settings);
   }
 
   static void setActiveBusiness({required String productId}) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/transaction_card.dart';
+import 'package:simple_tor_web/ui/transaction_card.dart';
 
 class TransactionPage extends StatelessWidget {
   const TransactionPage({super.key});

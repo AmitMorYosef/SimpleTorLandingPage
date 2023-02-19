@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_toast.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/sliding_bottom_sheet.dart';
-import 'package:management_system_app/ui/helpers/fonts_helper.dart';
-import 'package:management_system_app/ui/pages_opener.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_toast.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/sliding_bottom_sheet.dart';
+import 'package:simple_tor_web/ui/helpers/fonts_helper.dart';
+import 'package:simple_tor_web/ui/pages_opener.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app_const/app_sizes.dart';

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:management_system_app/models/price_model.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/models/price_model.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 class Treatment {
   late int totalMinutes = 0;

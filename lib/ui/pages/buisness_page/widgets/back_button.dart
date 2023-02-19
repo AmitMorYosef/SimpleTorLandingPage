@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
 
 import '../../../../app_const/app_sizes.dart';
 import '../../../../app_statics.dart/screens_data.dart';

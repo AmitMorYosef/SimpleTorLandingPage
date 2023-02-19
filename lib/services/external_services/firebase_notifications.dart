@@ -3,12 +3,11 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:management_system_app/app_const/application_general.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
 
 import '../../../app_const/platform.dart';
 import '../../../app_statics.dart/general_data.dart';
-import '../../../utlis/notifications_utlis.dart';
 
 class FirebaseNotifications {
   static FirebaseMessaging messaging = FirebaseMessaging.instance;
@@ -73,7 +72,7 @@ class FirebaseNotifications {
         body,
         await NotificationDetails(
             android: AndroidNotificationDetails(
-                'firebase_notifications_channel_id', 'management_system_app',
+                'firebase_notifications_channel_id', 'simple_tor_web',
                 importance: Importance.max,
                 priority: Priority.high,
                 playSound: true),
@@ -102,12 +101,12 @@ class FirebaseNotifications {
       BuildContext? context = GeneralData.generalContext;
       final title = message.data["title"] as String;
       final body = message.data["body"] as String;
-      if (context != null)
-        inAppMessage(
-          context: context,
-          title: title,
-          body: body,
-        );
+      // if (context != null)
+      //   inAppMessage(
+      //     context: context,
+      //     title: title,
+      //     body: body,
+      //   );
     });
   }
 

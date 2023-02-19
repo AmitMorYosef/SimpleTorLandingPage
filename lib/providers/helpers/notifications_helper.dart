@@ -1,19 +1,18 @@
 import 'package:intl/intl.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/services/clients/firestore_client.dart';
-import 'package:management_system_app/models/user_model.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/models/user_model.dart';
+import 'package:simple_tor_web/services/clients/firestore_client.dart';
 
 import '../../app_const/booking.dart';
 import '../../app_const/notification.dart';
 import '../../app_statics.dart/settings_data.dart';
 import '../../app_statics.dart/user_data.dart';
-import '../../services/clients/server_notifications_client.dart';
 import '../../models/booking_model.dart';
 import '../../models/notification_topic.dart';
 import '../../models/worker_model.dart';
+import '../../services/clients/server_notifications_client.dart';
 import '../../services/errors_service/app_errors.dart';
 import '../../services/errors_service/user.dart';
-import '../../utlis/notifications_utlis.dart';
 import '../../utlis/string_utlis.dart';
 
 class NotificationsHelper {
@@ -202,12 +201,12 @@ class NotificationsHelper {
     int minutesBeforeNotify,
   ) async {
     if (booking.status == BookingStatuses.approved) {
-      return await newNotification(
-          allowedNotification,
-          minutesBeforeNotify,
-          booking.bookingDate,
-          booking.treatment.totalMinutes,
-          SettingsData.settings.shopName);
+      // return await newNotification(
+      //     allowedNotification,
+      //     minutesBeforeNotify,
+      //     booking.bookingDate,
+      //     booking.treatment.totalMinutes,
+      //     SettingsData.settings.shopName);
     }
     return false;
   }
@@ -218,9 +217,9 @@ class NotificationsHelper {
     int minutesBeforeNotify,
   ) async {
     if (UserData.user.phoneNumber == booking.customerPhone) {
-      await deleteNotification(minutesBeforeNotify, booking.bookingDate,
-          booking.treatment.totalMinutes);
-      ;
+      // await deleteNotification(minutesBeforeNotify, booking.bookingDate,
+      //     booking.treatment.totalMinutes);
+      // ;
     }
   }
 

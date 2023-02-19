@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/server_variables.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/server_variables.dart';
 
 class NotificationServeice {
   Future<bool> activateWitingListNotification({required String topic}) async {

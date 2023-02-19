@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/services/errors_service/app_errors.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_container.dart';
-import 'package:management_system_app/ui/general_widgets/dialogs/genral_dialog.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/services/errors_service/app_errors.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_container.dart';
+import 'package:simple_tor_web/ui/general_widgets/dialogs/genral_dialog.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../app_const/limitations.dart';
 import '../../../app_const/resources.dart';

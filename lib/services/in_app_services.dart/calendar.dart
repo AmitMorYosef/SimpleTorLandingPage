@@ -2,10 +2,10 @@ import 'dart:collection';
 import 'dart:io';
 
 import 'package:device_calendar/device_calendar.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/app_const/platform.dart';
-import 'package:management_system_app/services/clients/secured_storage_client.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/app_const/platform.dart';
+import 'package:simple_tor_web/services/clients/secured_storage_client.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 

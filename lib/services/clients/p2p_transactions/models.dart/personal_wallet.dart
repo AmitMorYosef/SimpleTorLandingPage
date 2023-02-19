@@ -8,7 +8,7 @@
 //     "phone_number": "",
 //     "type": "person",
 
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/contact.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/contact.dart';
 
 class PersonalWallet {
   String first_name, //: "John",

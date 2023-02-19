@@ -21,11 +21,20 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return android;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for android - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -52,38 +61,5 @@ class DefaultFirebaseOptions {
     databaseURL: 'https://managementsystemapp-c1fda-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'managementsystemapp-c1fda.appspot.com',
     measurementId: 'G-WP8J044JN9',
-  );
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDOtuLpmBpMDgHYNZbgHQrBDaDXkXqGbjI',
-    appId: '1:670820779934:android:04b6e84306cac46a90788f',
-    messagingSenderId: '670820779934',
-    projectId: 'managementsystemapp-c1fda',
-    databaseURL: 'https://managementsystemapp-c1fda-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'managementsystemapp-c1fda.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC1WWMTbbU-bm1OAYIyPrmuUijWALJClks',
-    appId: '1:670820779934:ios:a57884e2212a4ff990788f',
-    messagingSenderId: '670820779934',
-    projectId: 'managementsystemapp-c1fda',
-    databaseURL: 'https://managementsystemapp-c1fda-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'managementsystemapp-c1fda.appspot.com',
-    androidClientId: '670820779934-5uq9ucnhk9stpj8ue605lstjjqkodqjq.apps.googleusercontent.com',
-    iosClientId: '670820779934-d8u4k9tqfa9efclnsap39n5a8capcnfp.apps.googleusercontent.com',
-    iosBundleId: 'com.simplecode.managementSystemApp',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyC1WWMTbbU-bm1OAYIyPrmuUijWALJClks',
-    appId: '1:670820779934:ios:6643417c5a9295a890788f',
-    messagingSenderId: '670820779934',
-    projectId: 'managementsystemapp-c1fda',
-    databaseURL: 'https://managementsystemapp-c1fda-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'managementsystemapp-c1fda.appspot.com',
-    androidClientId: '670820779934-5uq9ucnhk9stpj8ue605lstjjqkodqjq.apps.googleusercontent.com',
-    iosClientId: '670820779934-m2jfrm9kjjjtrio3n3ol5jkpt2m6ghkc.apps.googleusercontent.com',
-    iosBundleId: 'com.example.managementSystemApp',
   );
 }

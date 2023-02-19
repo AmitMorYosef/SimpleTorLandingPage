@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:intl/intl.dart';
-import 'package:management_system_app/models/treatment_model.dart';
-import 'package:management_system_app/models/worker_model.dart';
-import 'package:management_system_app/services/external_services/firebase_notifications.dart';
+import 'package:simple_tor_web/models/treatment_model.dart';
+import 'package:simple_tor_web/models/worker_model.dart';
+import 'package:simple_tor_web/services/external_services/firebase_notifications.dart';
 import 'package:uuid/uuid.dart';
 
 import '../app_const/booking.dart';

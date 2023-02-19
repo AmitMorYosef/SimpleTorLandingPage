@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:management_system_app/providers/booking_provider.dart';
+import 'package:simple_tor_web/providers/booking_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../helpers/fonts_helper.dart';

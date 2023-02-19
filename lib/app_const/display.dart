@@ -2,7 +2,7 @@
 /// example: save the different theme options
 
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/themes/dark_theme.dart';
+import 'package:simple_tor_web/ui/themes/dark_theme.dart';
 
 import '../ui/themes/light_theme.dart';
 

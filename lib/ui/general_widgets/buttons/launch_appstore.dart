@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/services/in_app_services.dart/app_launcher.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_container.dart';
+import 'package:simple_tor_web/services/in_app_services.dart/app_launcher.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_container.dart';
 
 import '../../../app_const/app_sizes.dart';
 import '../../helpers/fonts_helper.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_picker/flutter_picker.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../app_const/app_sizes.dart';
 import '../../../services/in_app_services.dart/language.dart';

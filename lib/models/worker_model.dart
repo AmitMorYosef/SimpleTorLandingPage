@@ -2,11 +2,11 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-import 'package:management_system_app/models/booking_model.dart';
-import 'package:management_system_app/models/break_model.dart';
-import 'package:management_system_app/models/price_model.dart';
-import 'package:management_system_app/models/treatment_model.dart';
-import 'package:management_system_app/utlis/times_utlis.dart';
+import 'package:simple_tor_web/models/booking_model.dart';
+import 'package:simple_tor_web/models/break_model.dart';
+import 'package:simple_tor_web/models/price_model.dart';
+import 'package:simple_tor_web/models/treatment_model.dart';
+import 'package:simple_tor_web/utlis/times_utlis.dart';
 
 import '../app_const/gender.dart';
 import '../app_const/worker_scedule.dart';

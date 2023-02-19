@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/general_widgets/buttons/booking_button.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/drop_down_menu.dart';
-import 'package:management_system_app/ui/pages/my_bookings_page/widgets/booking_card.dart';
-import 'package:management_system_app/ui/pages/settings_page/pages/notification_page/widgets/notification_switch.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
+import 'package:simple_tor_web/ui/general_widgets/buttons/booking_button.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/drop_down_menu.dart';
+import 'package:simple_tor_web/ui/pages/my_bookings_page/widgets/booking_card.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../app_const/app_sizes.dart';
 import '../../../app_const/application_general.dart';
@@ -189,12 +188,12 @@ class _MyBookingsState extends State<MyBookings>
                         .titleLarge!
                         .copyWith(fontSize: 16),
                   )),
-              NotificationSwitch(
-                afterAllowed: (() => Future.delayed(Duration(milliseconds: 0))
-                    .then((value) => setState(() {
-                          controller.forward();
-                        }))),
-              )
+              // NotificationSwitch(
+              //   afterAllowed: (() => Future.delayed(Duration(milliseconds: 0))
+              //       .then((value) => setState(() {
+              //             controller.forward();
+              //           }))),
+              // )
             ],
           ),
         ),

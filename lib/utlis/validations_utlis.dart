@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../app_const/limitations.dart';
 import '../app_statics.dart/settings_data.dart';

@@ -1,4 +1,4 @@
-import 'package:management_system_app/services/in_app_services.dart/secured_storage.dart';
+import 'package:simple_tor_web/services/in_app_services.dart/secured_storage.dart';
 
 import '../../app_const/application_general.dart';
 

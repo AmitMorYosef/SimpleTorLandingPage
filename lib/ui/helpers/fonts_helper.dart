@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:management_system_app/app_const/fonts.dart';
+import 'package:simple_tor_web/app_const/fonts.dart';
 
 import '../../app_const/application_general.dart';
 import '../../app_statics.dart/settings_data.dart';

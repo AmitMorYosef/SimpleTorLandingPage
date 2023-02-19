@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:management_system_app/ui/general_widgets/dialogs/genral_dialog.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/ui/general_widgets/dialogs/genral_dialog.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 Widget infoButton(
     {required BuildContext context,

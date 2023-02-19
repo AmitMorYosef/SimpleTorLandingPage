@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:management_system_app/models/worker_model.dart';
+import 'package:simple_tor_web/models/worker_model.dart';
 
 import '../../app_const/db.dart';
 import '../../app_statics.dart/general_data.dart';

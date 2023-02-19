@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_container.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_toast.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_container.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_toast.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app_const/app_external_links.dart';

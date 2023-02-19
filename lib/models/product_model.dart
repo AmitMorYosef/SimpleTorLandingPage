@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:management_system_app/models/price_model.dart';
+import 'package:simple_tor_web/models/price_model.dart';
 
 class ProductModel {
   String description = '';

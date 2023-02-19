@@ -16,7 +16,7 @@
 //
 //     }
 
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/address.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/address.dart';
 
 class Contact {
   String phone_number, //: "+14155551234",

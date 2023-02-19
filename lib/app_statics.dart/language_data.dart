@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:management_system_app/services/clients/secured_storage_client.dart';
+import 'package:simple_tor_web/services/clients/secured_storage_client.dart';
 
 import '../app_const/device_keys.dart';
 import '../app_const/platform.dart';

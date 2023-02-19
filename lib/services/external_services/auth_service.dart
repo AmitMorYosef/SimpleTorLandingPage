@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/providers/login_provider.dart';
-import 'package:management_system_app/services/errors_service/app_errors.dart';
-import 'package:management_system_app/services/errors_service/messages.dart';
-import 'package:management_system_app/ui/general_widgets/pickers/pick_phone_number.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/providers/login_provider.dart';
+import 'package:simple_tor_web/services/errors_service/app_errors.dart';
+import 'package:simple_tor_web/services/errors_service/messages.dart';
+import 'package:simple_tor_web/ui/general_widgets/pickers/pick_phone_number.dart';
 
 import '../../../app_const/resources.dart';
 import '../../../app_statics.dart/user_data.dart';

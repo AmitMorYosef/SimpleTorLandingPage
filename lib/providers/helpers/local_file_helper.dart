@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:management_system_app/models/local_file_booking.dart';
-
 import '../../app_const/application_general.dart';
 import '../../app_const/booking.dart';
 import '../../models/booking_model.dart';
@@ -27,27 +25,5 @@ class LocalFileHelper {
     }
     return await LocalFileDb().writeToFile(
         fileName: "$workerId---$dayString", content: jsonEncode(bookings));
-  }
-
-  /// Get: `workerId, dayString ` return the bookings from the file if exist
-  Future<Map<String, LocalFileBooking>?> readDayFromLocalFile({
-    required String workerId,
-    required String dayString,
-  }) async {
-    final bookingsJson =
-        await LocalFileDb().readFromFile(fileName: "$workerId---$dayString");
-
-    if (bookingsJson != null) {
-      logger.d("No file with that name --> $workerId---$dayString");
-      return null;
-    }
-
-    final Map<String, LocalFileBooking> bookings = {};
-
-    bookingsJson!.forEach((bookingId, booking) {
-      bookings[bookingId] = LocalFileBooking.fromLocalFileJson(booking);
-    });
-
-    return bookings;
   }
 }

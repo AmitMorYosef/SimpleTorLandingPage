@@ -4,42 +4,34 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/models/waiting_list_customer.dart';
-import 'package:management_system_app/providers/helpers/notifications_helper.dart';
-import 'package:management_system_app/providers/login_provider.dart';
-import 'package:management_system_app/services/clients/firebase_real_time_client.dart';
-import 'package:management_system_app/services/errors_service/app_errors.dart';
-import 'package:management_system_app/services/errors_service/user.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/providers/helpers/notifications_helper.dart';
+import 'package:simple_tor_web/providers/login_provider.dart';
+import 'package:simple_tor_web/services/clients/firebase_real_time_client.dart';
+import 'package:simple_tor_web/services/errors_service/app_errors.dart';
+import 'package:simple_tor_web/services/errors_service/user.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:uuid/uuid.dart';
 
 import '../app_const/db.dart';
 import '../app_const/gender.dart';
 import '../app_const/limitations.dart';
 import '../app_const/notification.dart';
-import '../app_const/purchases.dart';
-import '../app_statics.dart/general_data.dart';
 import '../app_statics.dart/settings_data.dart';
-import '../app_statics.dart/subscription_data.dart';
 import '../app_statics.dart/user_data.dart';
 import '../app_statics.dart/worker_data.dart';
 import '../models/booking_model.dart';
-import '../models/notification_topic.dart';
 import '../models/user_model.dart';
 import '../models/worker_model.dart';
 import '../services/clients/firebase_auth_client.dart';
-import '../services/clients/firebase_notifications_client.dart';
 import '../services/clients/firestore_client.dart';
 import '../services/errors_service/messages.dart';
 import '../services/in_app_services.dart/calendar.dart';
-import '../utlis/general_utlis.dart';
 import '../utlis/times_utlis.dart';
 import 'booking_provider.dart';
 import 'helpers/db_pathes_helper.dart';
-import 'helpers/purchaces_helper.dart';
 
 class UserProvider extends ChangeNotifier {
   Future<bool> setupUser(
@@ -85,21 +77,14 @@ class UserProvider extends ChangeNotifier {
         func will take it*/
       UserData.startPublicDataListening();
 
-      await PurchesesHelper().subscriptionsInsurance();
-
       NotificationsHelper().removeExpiredSubNotifications();
       NotificationsHelper().removeDeletedBuisnessesSubNotifications();
-      _updateFcmIfNeeded(); // update server to relevant fcm for notifications
       /*need to clean the data only after getting the current data*/
       _cleanExpiredData();
       //add the user preview to the businesses previews
       SettingsData.buisnessesPreview.buisnesses.addAll(UserData.user.previews);
       // clean the deleted buisnesses from user
-      removeDeletedLastVisitedBuisnesses();
-      //set up products
-      SubscriptionData.setPurchaseProducts(
-              revenueCatId: UserData.user.revenueCatId)
-          .timeout(Duration(seconds: 10));
+
       UiManager.insertUpdate(Providers.user);
       return true;
     } catch (e) {
@@ -109,69 +94,6 @@ class UserProvider extends ChangeNotifier {
       AppErrors.addError(details: e.toString());
       return false;
     }
-  }
-
-  // --
-  Future<bool> deleteVisitedBuisness(String buisnessId) async {
-    AppErrors.addError(
-        code: userCodeToInt[UserErrorCodes.deleteVisitedBuisness]);
-    UserData.user.lastVisitedBuisnessesRemoved.add(buisnessId);
-    UserData.user.lastVisitedBuisnesses.remove(buisnessId);
-    UiManager.insertUpdate(Providers.user);
-    if (!await isNetworkConnected()) return false;
-    return await FirestoreClient().updateMultipleFieldsInsideDocAsArray(
-        path: usersCollection,
-        docId: UserData.user.phoneNumber,
-        data: {
-          "lastVisitedBuisnesses": {
-            "command": ArrayCommands.remove,
-            "value": buisnessId
-          },
-          "lastVisitedBuisnessesRemoved": {
-            "command": ArrayCommands.add,
-            "value": buisnessId
-          },
-        });
-  }
-
-  void removeDeletedLastVisitedBuisnesses() async {
-    /* update the list of the last visited buisnesses to make it up to date any time
-    the user is loading the app -> don't need to return value, it can 
-    accure in the background if it faile -> dosen't important.
-    */
-    AppErrors.addError(
-        code: userCodeToInt[UserErrorCodes.removeDeletedLastVisitedBuisnesses]);
-    List<String> deletedBuisnesses = [];
-    UserData.user.lastVisitedBuisnesses.forEach((element) {
-      if (!SettingsData.buisnessesPreview.buisnesses.containsKey(element)) {
-        deletedBuisnesses.add(element);
-      }
-    });
-    deletedBuisnesses.forEach((id) => deleteVisitedBuisness(id));
-  }
-
-  Future<void> _updateFcmIfNeeded() async {
-    AppErrors.addError(code: userCodeToInt[UserErrorCodes.updateFcmIfNeeded]);
-    /* Upading the fcm of the user and if he worker in 
-      some businesses its change too if its change - change
-      if the user change a device Usually */
-    String deviceFcm = await FirebaseNotificationsClient().getDeviceFCM();
-    if (deviceFcm == UserData.user.currentFcm) return;
-    await FirestoreClient()
-        .updatePublicUserField(
-            businessesIds: UserData.user.permission.keys.toList(),
-            userPhone: UserData.user.phoneNumber,
-            fieldName: "currentFcm",
-            value: deviceFcm)
-        .then((resp) {
-      if (resp) {
-        if (WorkerData.worker.phone == UserData.user.phoneNumber) {
-          WorkerData.worker.currentFcm = deviceFcm;
-        }
-        UserData.user.currentFcm = deviceFcm;
-        logger.d("User new fcm succesfully updated!");
-      }
-    });
   }
 
   Future<void> _cleanExpiredData() async {
@@ -263,28 +185,6 @@ class UserProvider extends ChangeNotifier {
     });
   }
 
-  Future<bool> deviceTurnOffNotifications() async {
-    AppErrors.addError(
-        code: userCodeToInt[UserErrorCodes.deviceTurnOffNotifications]);
-    List<String> notifications = [];
-    UserData.user.subToNotifications.values.forEach((notificationsMap) {
-      notifications += notificationsMap.keys.toList();
-    });
-    return await FirebaseNotificationsClient()
-        .deviceUnSubToAllNotifications(notifications: notifications);
-  }
-
-  Future<bool> deviceTurnOnNotifications() async {
-    AppErrors.addError(
-        code: userCodeToInt[UserErrorCodes.deviceTurnOnNotifications]);
-    List<String> notifications = [];
-    UserData.user.subToNotifications.values.forEach((notificationsMap) {
-      notifications += notificationsMap.keys.toList();
-    });
-    return await FirebaseNotificationsClient()
-        .deviceSubToAllNotifications(notifications: notifications);
-  }
-
   Future<bool> deleteUser(User user) async {
     AppErrors.addError(code: userCodeToInt[UserErrorCodes.deleteUser]);
     return await FirestoreClient()
@@ -313,7 +213,7 @@ class UserProvider extends ChangeNotifier {
           lastVisitedBuisnesses: [],
           subToNotifications: {},
         );
-        await deviceTurnOffNotifications();
+
         if (includeUpdetUiInsert) {
           UiManager.insertUpdate(Providers.settings); // update pages manager
         }
@@ -464,17 +364,6 @@ class UserProvider extends ChangeNotifier {
           if (!fromUpdate) {
             NotificationsHelper().notifyWorkerAboutOrder(worker, booking);
           }
-
-          // remove sub from waiting list if exist
-          this.unSubNotification(
-              topicId: NotificationTopic(
-                      businessId: SettingsData.appCollection,
-                      workerId: booking.workerId,
-                      date: keyDate,
-                      workerName: booking.workerName)
-                  .toTopicStr(),
-              sort: NotifySorts.waitingList);
-
           /*Update the workers locally */
           BookingProvider.addBookingToWorkerLocally(booking);
           // add the order to the calendar
@@ -629,124 +518,6 @@ class UserProvider extends ChangeNotifier {
 
   // ----------------------------- notifications ---------------------------
 
-  Future<bool> subToNotification(
-      {required NotificationTopic notificationTopicObject,
-      required NotifySorts sort,
-      String userName = "",
-      DateTime? date,
-      WorkerModel? worker,
-      String userPhone = ""}) async {
-    AppErrors.addError(code: userCodeToInt[UserErrorCodes.subToNotification]);
-    if (SettingsData.businessSubtype == SubType.basic) {
-      AppErrors.addError(error: Errors.lowSubType);
-      return false;
-    }
-    if (UserData.user.phoneNumber == '') {
-      AppErrors.error = Errors.notLogedIn;
-      return false;
-    }
-    if (!UserData.user.subToNotifications.containsKey(sort)) {
-      AppErrors.error = Errors.illegalFields;
-      return false;
-    }
-    String strNotificationObject = notificationTopicObject.toStrObject();
-    String topic = notificationTopicObject.toTopicStr();
-    if (UserData.user.subToNotifications[sort]!.containsKey(topic)) return true;
-
-    if (_notifyLimited(sort, limitForSubNotifications)) {
-      AppErrors.error = Errors.passedLimit;
-      return false;
-    }
-    // adding the full object with the data like imageUrl names etc..
-    UserData.user.subToNotifications[sort]![topic] = strNotificationObject;
-    logger.d("The createdTopic is -> $topic");
-    return await FirestoreClient()
-        .subToNotification(
-            notiType: notifySortsToStr[sort]!,
-            topic: topic,
-            dbStrObject: strNotificationObject,
-            uperPhone: UserData.user.phoneNumber)
-        .then((value) {
-      if (value) {
-        if (sort == NotifySorts.waitingList) {
-          if (userName != "" &&
-              date != null &&
-              worker != null &&
-              userPhone != "") {
-            NotificationsHelper().notifyWorkerOnUserAddedToWaitingList(
-                worker: worker,
-                userName: userName,
-                date: date,
-                userPhone: userPhone);
-          }
-          FirebaseRealTimeClient().updateChild(
-              pathToChild: DbPathesHelper().getWaitingListChildPath(),
-              data: WaitingListCustomer.fromUser(UserData.user).toJson());
-        }
-
-        UiManager.insertUpdate(Providers.user);
-      } else {
-        UserData.user.subToNotifications[sort]!.remove(strNotificationObject);
-      }
-      return value;
-    });
-  }
-
-  Future<bool> unSubNotification(
-      {required String topicId, required NotifySorts sort}) async {
-    AppErrors.addError(code: userCodeToInt[UserErrorCodes.unSubNotification]);
-
-    if (UserData.user.phoneNumber == '') {
-      AppErrors.error = Errors.notLogedIn;
-      return false;
-    }
-    if (!UserData.user.subToNotifications.containsKey(sort)) {
-      AppErrors.error = Errors.illegalFields;
-      return false;
-    }
-    if (!UserData.user.subToNotifications[sort]!.containsKey(topicId)) {
-      AppErrors.error = Errors.illegalFields;
-      return false;
-    }
-    String strNotificationObject =
-        UserData.user.subToNotifications[sort]![topicId]!;
-    String topic = topicId;
-    if (!UserData.user.subToNotifications[sort]!.containsKey(topic)) {
-      AppErrors.error = Errors.notFoundItem;
-      return false;
-    }
-    if (topic != '') {
-      return await FirestoreClient()
-          .unSubFromNotification(
-              notiType: notifySortsToStr[sort]!,
-              topic: topic,
-              dbStrObject: strNotificationObject,
-              userPhone: UserData.user.phoneNumber)
-          .then((resp) {
-        if (resp) {
-          if (sort == NotifySorts.waitingList) {
-            FirebaseRealTimeClient().removeChild(
-                pathToChild: DbPathesHelper().getWaitingListChildPath());
-          }
-        }
-        if (UserData.user.subToNotifications.containsKey(sort) &&
-            UserData.user.subToNotifications[sort]!.containsKey(topic)) {
-          UserData.user.subToNotifications[sort]!.remove(topicId);
-          UiManager.insertUpdate(Providers.user);
-        }
-        return resp;
-      });
-    } else {
-      AppErrors.error = Errors.illegalFields;
-      return false;
-    }
-  }
-
-  bool _notifyLimited(NotifySorts sort, int limit) {
-    return UserData.user.subToNotifications.containsKey(sort) &&
-        UserData.user.subToNotifications[sort]!.length >= limit;
-  }
-
   bool isAlreadySub({required String topicId, required NotifySorts sort}) {
     AppErrors.addError(code: userCodeToInt[UserErrorCodes.isAlreadySub]);
     if (!UserData.user.subToNotifications.containsKey(sort)) return false;
@@ -756,62 +527,6 @@ class UserProvider extends ChangeNotifier {
   }
 
   // ---------------------------- user details ------------------------------
-
-  Future<bool> setGender(Gender gender) async {
-    AppErrors.addError(code: userCodeToInt[UserErrorCodes.setGender]);
-    if (gender == UserData.user.gender) return true;
-    return await FirestoreClient()
-        .updatePublicUserField(
-            userPhone: UserData.user.phoneNumber,
-            fieldName: "gender",
-            value: genderToStr[gender],
-            businessesIds: UserData.user.permission.keys.toList())
-        .then(((value) async {
-      if (value) {
-        if (WorkerData.worker.phone == UserData.user.phoneNumber) {
-          WorkerData.worker.gender = gender;
-        }
-        UserData.user.gender = gender;
-      }
-
-      return value;
-    }));
-  }
-
-  Future<bool> setName(String name, BuildContext context) async {
-    AppErrors.addError(code: userCodeToInt[UserErrorCodes.setName]);
-    if (name == UserData.user.name) return true;
-    logger.d("updating to --> $name");
-    return await FirestoreClient()
-        .updatePublicUserField(
-            userPhone: UserData.user.phoneNumber,
-            businessesIds: UserData.user.permission.keys.toList(),
-            fieldName: "name",
-            value: name)
-        .then((value) async {
-      if (value) {
-        if (WorkerData.worker.phone == UserData.user.phoneNumber) {
-          WorkerData.worker.name = name;
-        }
-        UserData.user.name = name;
-        //update in all workers objects that the user has
-        await Future.forEach(UserData.user.permission.keys, (id) async {
-          if (UserData.user.permission[id] == 2 &&
-              SettingsData.appCollection == id)
-            await FirestoreClient()
-                .updateFieldInsideDocAsMap(
-                    fieldName: 'ownersName',
-                    docId: GeneralData.currentBusinesssId,
-                    path: buisnessCollection,
-                    value: name)
-                .then((value) {
-              if (value) SettingsData.settings.ownersName = name;
-            });
-        });
-      }
-      return value;
-    });
-  }
 
   Future<bool> addOrRemoveLikeForStoryImage(String imageId, String workerPhone,
       String userPhoneThatLiked, ArrayCommands command) async {

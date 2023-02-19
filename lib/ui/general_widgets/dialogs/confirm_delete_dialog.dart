@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../../../models/booking_model.dart';
 import 'genral_dialog.dart';

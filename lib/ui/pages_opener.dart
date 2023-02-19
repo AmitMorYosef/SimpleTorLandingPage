@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/ui/pages/login_page/login.dart';
-import 'package:management_system_app/ui/pages/login_page/sign_up.dart';
-import 'package:management_system_app/ui/pages/settings_page/pages/business_creation/widgets/open_screen.dart';
-import 'package:management_system_app/ui/pages/settings_page/pages/notification_page/notifications_page.dart';
-import 'package:management_system_app/ui/pages/settings_page/pages/schedule_page/schedule_page.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/ui/pages/login_page/login.dart';
+import 'package:simple_tor_web/ui/pages/login_page/sign_up.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
 
 import '../app_statics.dart/user_data.dart';
 import '../providers/login_provider.dart';
 import '../providers/user_provider.dart';
 import '../utlis/general_utlis.dart';
-import '../utlis/string_utlis.dart';
-import 'general_widgets/custom_widgets/custom_toast.dart';
 import 'general_widgets/custom_widgets/sliding_bottom_sheet.dart';
 
 class PagesOpener {
@@ -51,39 +45,5 @@ class PagesOpener {
     context.read<LogginProvider>().setupLoggin();
     UserData.userListinerAllowUpdate = true; // return it to allow updates
     return;
-  }
-
-  Future<void> openBusinessCreation(
-      {required BuildContext context, bool showToasts = true}) async {
-    if (UserData.user.name == "guest") {
-      await openLogin(context: context, openCreateBusiness: true);
-      return;
-    }
-
-    final user = UserData.user;
-    if (user.myBuisnessesIds.length >= user.limitOfBuisnesses) {
-      if (showToasts) {
-        CustomToast(
-                context: context,
-                msg: translate("limitOfBusinessesForUser") +
-                    user.limitOfBuisnesses.toString(),
-                gravity: ToastGravity.BOTTOM)
-            .init();
-      }
-      return;
-    }
-
-    await Navigator.push(context,
-        MaterialPageRoute(builder: (_) => BusinessCreationOpenScreen()));
-  }
-
-  Future<void> openMyNotification({required BuildContext context}) async {
-    await Navigator.push(
-        context, MaterialPageRoute(builder: (_) => NotificationsPage()));
-  }
-
-  Future<void> openScehduleSettings({required BuildContext context}) async {
-    await Navigator.push(
-        context, MaterialPageRoute(builder: (_) => SettingsSchedulePage()));
   }
 }

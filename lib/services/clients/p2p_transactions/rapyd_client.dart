@@ -1,11 +1,11 @@
-import 'package:management_system_app/services/clients/p2p_transactions/make_request.dart';
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/address.dart';
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/beneficiary.dart';
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/contact.dart';
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/payout.dart';
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/personal_wallet.dart';
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/sender.dart';
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/transfer.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/make_request.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/address.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/beneficiary.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/contact.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/payout.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/personal_wallet.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/sender.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/transfer.dart';
 import 'package:uuid/uuid.dart';
 
 class RapydClient {

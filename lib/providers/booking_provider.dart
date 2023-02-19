@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/models/worker_model.dart';
-import 'package:management_system_app/services/errors_service/booking.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/models/worker_model.dart';
+import 'package:simple_tor_web/services/errors_service/booking.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
 
 import '../app_statics.dart/settings_data.dart';
 import '../models/booking_model.dart';

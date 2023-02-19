@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:intl_phone_field/countries.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/services/clients/firebase_auth_client.dart';
-import 'package:management_system_app/services/errors_service/app_errors.dart';
-import 'package:management_system_app/services/errors_service/login.dart';
-import 'package:management_system_app/ui/general_widgets/pickers/pick_phone_number.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/services/clients/firebase_auth_client.dart';
+import 'package:simple_tor_web/services/errors_service/app_errors.dart';
+import 'package:simple_tor_web/services/errors_service/login.dart';
+import 'package:simple_tor_web/ui/general_widgets/pickers/pick_phone_number.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
 
 class LogginProvider extends ChangeNotifier {
   String verificationID = ""; // hold the id of the firebase verification

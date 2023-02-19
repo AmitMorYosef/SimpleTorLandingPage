@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:management_system_app/ui/general_widgets/dialogs/genral_dialog.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/ui/general_widgets/dialogs/genral_dialog.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../providers/booking_provider.dart';

@@ -3,8 +3,8 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:management_system_app/app_statics.dart/settings_data.dart';
-import 'package:management_system_app/services/clients/firebase_auth_client.dart';
+import 'package:simple_tor_web/app_statics.dart/settings_data.dart';
+import 'package:simple_tor_web/services/clients/firebase_auth_client.dart';
 
 import '../app_const/application_general.dart';
 import '../app_const/db.dart';

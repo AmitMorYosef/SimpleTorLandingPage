@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:management_system_app/app_statics.dart/screens_data.dart';
-import 'package:management_system_app/models/booking_model.dart';
-import 'package:management_system_app/providers/device_provider.dart';
-import 'package:management_system_app/providers/settings_provider.dart';
-import 'package:management_system_app/providers/user_provider.dart';
-import 'package:management_system_app/ui/general_widgets/dialogs/confirm_save_dialog.dart';
-import 'package:management_system_app/ui/general_widgets/dialogs/confirm_update_dialog.dart';
-import 'package:management_system_app/ui/general_widgets/loading_widgets/loading_dialog.dart';
-import 'package:management_system_app/ui/pages/booking_page/widgets/time_widget.dart';
-import 'package:management_system_app/ui/pages/booking_page/widgets/waiting_list_button.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
-import 'package:management_system_app/utlis/times_utlis.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_tor_web/app_statics.dart/screens_data.dart';
+import 'package:simple_tor_web/models/booking_model.dart';
+import 'package:simple_tor_web/providers/device_provider.dart';
+import 'package:simple_tor_web/providers/settings_provider.dart';
+import 'package:simple_tor_web/providers/user_provider.dart';
+import 'package:simple_tor_web/ui/general_widgets/dialogs/confirm_save_dialog.dart';
+import 'package:simple_tor_web/ui/general_widgets/dialogs/confirm_update_dialog.dart';
+import 'package:simple_tor_web/ui/general_widgets/loading_widgets/loading_dialog.dart';
+import 'package:simple_tor_web/ui/pages/booking_page/widgets/time_widget.dart';
+import 'package:simple_tor_web/ui/pages/booking_page/widgets/waiting_list_button.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
+import 'package:simple_tor_web/utlis/times_utlis.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../app_const/app_sizes.dart';
@@ -26,7 +26,6 @@ import '../../../../models/worker_model.dart';
 import '../../../../providers/booking_provider.dart';
 import '../../../general_widgets/buttons/launch_appstore.dart';
 import '../../../helpers/fonts_helper.dart';
-import '../../settings_page/pages/notification_page/widgets/notification_switch.dart';
 
 // ignore: must_be_immutable
 class TimePicker extends StatelessWidget {
@@ -132,7 +131,7 @@ class TimePicker extends StatelessWidget {
                           translate('allwedNotificatonForWaitingList'),
                           style: FontsHelper().businessStyle(),
                         ),
-                        NotificationSwitch()
+                        //NotificationSwitch()
                       ],
                     ),
                   ),

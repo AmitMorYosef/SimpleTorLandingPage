@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:management_system_app/models/product_model.dart';
-import 'package:management_system_app/models/update_model.dart';
+import 'package:simple_tor_web/models/product_model.dart';
+import 'package:simple_tor_web/models/update_model.dart';
 
 import '../app_const/business_types.dart';
 import '../app_const/display.dart';

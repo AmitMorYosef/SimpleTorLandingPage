@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-import 'package:management_system_app/ui/general_widgets/intro/lib/flutter_intro.dart';
-import 'package:management_system_app/ui/general_widgets/pickers/pick_circle_image.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/animated_images.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/app_icons.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/back_button.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/business_name.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/products.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/reminder.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/story.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/subscribe_indicator.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/updates.dart';
-import 'package:management_system_app/utlis/general_utlis.dart';
 import 'package:pinch_zoom/pinch_zoom.dart';
-import 'package:provider/provider.dart';
+import 'package:simple_tor_web/ui/general_widgets/pickers/pick_circle_image.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/animated_images.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/app_icons.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/back_button.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/business_name.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/products.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/reminder.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/story.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/subscribe_indicator.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/updates.dart';
+import 'package:simple_tor_web/utlis/general_utlis.dart';
 
 import '../../../app_const/app_sizes.dart';
 import '../../../app_const/booking.dart';
@@ -26,7 +24,6 @@ import '../../../app_statics.dart/theme_data.dart';
 import '../../../app_statics.dart/user_data.dart';
 import '../../../models/booking_model.dart';
 import '../../../models/update_model.dart';
-import '../../../providers/settings_provider.dart';
 import '../../../services/enable_scroll_options.dart';
 import '../../../services/in_app_services.dart/language.dart';
 import '../../../utlis/image_utlis.dart';
@@ -54,7 +51,6 @@ class Buisness extends StatefulWidget {
 class _BuisnessState extends State<Buisness> {
   late String name, time, text, workerName, date;
 
-  Intro? intro = null;
   @override
   void initState() {
     super.initState();
@@ -84,142 +80,71 @@ class _BuisnessState extends State<Buisness> {
       }
     });
 
-    return GestureDetector(
-      onLongPress: () {
-        if (UserData.getPermission() < 1) {
-          return;
-        }
-        if (!SettingsData.workers.containsKey(UserData.user.phoneNumber)) {
-          return;
-        }
-        //vibrate(miliseconds: 3, amplitude: 256);
-        setState(() {
-          Buisness.editMode = !Buisness.editMode;
-          if (!Buisness.editMode) {
-            onExistEditMode();
-          }
-        });
-      },
-      child: Stack(children: [
-        CustomScrollView(
-            scrollBehavior: EnableScrollOptions(),
-            key: const PageStorageKey<String>("BusinessPage"),
-            controller: widget.businessPageController,
-            physics: BouncingScrollPhysics(),
-            slivers: [
-              SliverAppBar(
-                expandedHeight: changingImagesHeight,
-                toolbarHeight: changingImagesHeight * 0.32,
-                stretchTriggerOffset: 150,
-                onStretchTrigger: () async {
-                  return;
-                },
-                stretch: true,
-                actions: ApplicationLocalizations.of(context)!.isRTL()
-                    ? [Spacer(), backButton(context)]
-                    : [backButton(context), Spacer()],
-                elevation: 0,
-                pinned: true,
-                flexibleSpace: FlexibleSpaceBar(
-                  titlePadding: EdgeInsets.only(
-                      bottom: 5), // remove default bottom padding
-                  centerTitle: true,
-                  stretchModes: [
-                    StretchMode.zoomBackground,
-                    //StretchMode.blurBackground,
-                    StretchMode.fadeTitle
-                  ],
-                  background: PinchZoom(
-                      resetDuration: const Duration(milliseconds: 100),
-                      maxScale: 3,
-                      onZoomStart: () {},
-                      onZoomEnd: () {},
-                      child: AnimatedImages(editMode: Buisness.editMode)),
-                  title: shopIcon(),
-                ),
+    return Stack(children: [
+      CustomScrollView(
+          scrollBehavior: EnableScrollOptions(),
+          key: const PageStorageKey<String>("BusinessPage"),
+          controller: widget.businessPageController,
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            SliverAppBar(
+              expandedHeight: changingImagesHeight,
+              toolbarHeight: changingImagesHeight * 0.32,
+              stretchTriggerOffset: 150,
+              onStretchTrigger: () async {
+                return;
+              },
+              stretch: true,
+              actions: ApplicationLocalizations.of(context)!.isRTL()
+                  ? [Spacer(), backButton(context)]
+                  : [backButton(context), Spacer()],
+              elevation: 0,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                titlePadding:
+                    EdgeInsets.only(bottom: 5), // remove default bottom padding
+                centerTitle: true,
+                stretchModes: [
+                  StretchMode.zoomBackground,
+                  //StretchMode.blurBackground,
+                  StretchMode.fadeTitle
+                ],
+                background: PinchZoom(
+                    resetDuration: const Duration(milliseconds: 100),
+                    maxScale: 3,
+                    onZoomStart: () {},
+                    onZoomEnd: () {},
+                    child: AnimatedImages(editMode: Buisness.editMode)),
+                title: shopIcon(),
               ),
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  EnterAnimation(
-                    paddingFromTop: 15,
-                    animate: !ScreensData.buisnessInit,
-                    childCreator: businessBody,
-                  )
-                ]),
-              )
-            ]),
-        SettingsData.activeBusiness
-            ? Positioned(
-                right: 10,
-                top: 20,
-                child: SafeArea(
-                    child: Column(
-                  children: [
-                    editbutton(),
-                    Buisness.firstBooking != null &&
-                            UserData.isConnected() &&
-                            SettingsData.activeBusiness
-                        ? reminderNavigator()
-                        : SizedBox(),
-                  ],
-                )))
-            : SizedBox(),
-        Positioned(
-            right: 0, bottom: gHeight * 0.1, child: widget.bookingButton),
-      ]),
-    );
-  }
-
-  void onExistEditMode() {
-    //delete all story images that marked
-    Story.imagesToDelete = {};
-    if (BusinessName.nameField.contentValid &&
-        BusinessName.nameField.contentController.text !=
-            SettingsData.settings.shopName) {
-      SettingsData.settings.shopName =
-          BusinessName.nameField.contentController.text;
-      context
-          .read<SettingsProvider>()
-          .updateShopName(BusinessName.nameField.contentController.text);
-    }
-  }
-
-  Widget editbutton() {
-    if (UserData.getPermission() < 1) {
-      return SizedBox();
-    }
-    if (!SettingsData.workers.containsKey(UserData.user.phoneNumber)) {
-      return SizedBox();
-    }
-    return Opacity(
-      opacity: Buisness.editMode ? 1 : .5,
-      child: GestureDetector(
-        onTap: () async {
-          setState(() {
-            Buisness.editMode = !Buisness.editMode;
-            if (!Buisness.editMode) {
-              onExistEditMode();
-            }
-          });
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            alignment: Alignment.center,
-            width: 35,
-            height: 35,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Theme.of(context).colorScheme.background),
-            child: Icon(
-              Icons.edit,
-              color: Theme.of(context).colorScheme.secondary,
-              size: 25,
             ),
-          ),
-        ),
-      ),
-    );
+            SliverList(
+              delegate: SliverChildListDelegate([
+                EnterAnimation(
+                  paddingFromTop: 15,
+                  animate: !ScreensData.buisnessInit,
+                  childCreator: businessBody,
+                )
+              ]),
+            )
+          ]),
+      SettingsData.activeBusiness
+          ? Positioned(
+              right: 10,
+              top: 20,
+              child: SafeArea(
+                  child: Column(
+                children: [
+                  Buisness.firstBooking != null &&
+                          UserData.isConnected() &&
+                          SettingsData.activeBusiness
+                      ? reminderNavigator()
+                      : SizedBox(),
+                ],
+              )))
+          : SizedBox(),
+      Positioned(right: 0, bottom: gHeight * 0.1, child: widget.bookingButton),
+    ]);
   }
 
   Widget businessBody(BuildContext context) {
@@ -232,20 +157,17 @@ class _BuisnessState extends State<Buisness> {
       ),
       Updates(
         editMode: Buisness.editMode,
-        intro: intro,
       ),
       SizedBox(
         height: 100,
       ),
       Story(
         editMode: Buisness.editMode,
-        intro: intro,
       ),
       SizedBox(height: 30),
       Products(editMode: Buisness.editMode),
       AppIcons(
         editMode: Buisness.editMode,
-        intro: intro,
       ),
       SizedBox(
         height: gHeight * .1,

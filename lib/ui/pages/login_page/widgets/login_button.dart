@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_container.dart';
-import 'package:management_system_app/ui/general_widgets/pickers/pick_phone_number.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_container.dart';
+import 'package:simple_tor_web/ui/general_widgets/pickers/pick_phone_number.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../app_const/app_sizes.dart';

@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/providers/loading_provider.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/providers/loading_provider.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:uni_links/uni_links.dart';
 

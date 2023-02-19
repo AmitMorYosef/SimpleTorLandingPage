@@ -1,4 +1,4 @@
-import 'package:management_system_app/app_const/business_types.dart';
+import 'package:simple_tor_web/app_const/business_types.dart';
 
 import '../app_const/gender.dart';
 import '../app_statics.dart/language_data.dart';

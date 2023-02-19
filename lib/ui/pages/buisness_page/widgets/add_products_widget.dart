@@ -2,9 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utlis/string_utlis.dart';
-import '../../../general_widgets/buttons/custome_add_button.dart';
 import '../../../helpers/fonts_helper.dart';
-import '../../settings_page/pages/products_page/products_management.dart';
 
 class AddProductsWidget extends StatelessWidget {
   const AddProductsWidget({super.key});
@@ -23,10 +21,6 @@ class AddProductsWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomeAddButton(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => ProductsManagement())),
-              ),
               Text(
                 translate("EditProducts"),
                 style: FontsHelper().businessStyle(

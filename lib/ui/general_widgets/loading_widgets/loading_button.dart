@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
 
 // ignore: must_be_immutable
 class LoadingButton extends StatefulWidget {

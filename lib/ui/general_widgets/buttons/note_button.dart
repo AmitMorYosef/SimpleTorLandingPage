@@ -1,9 +1,9 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_text_form_field.dart';
-import 'package:management_system_app/ui/general_widgets/dialogs/genral_dialog.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_text_form_field.dart';
+import 'package:simple_tor_web/ui/general_widgets/dialogs/genral_dialog.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app_statics.dart/worker_data.dart';

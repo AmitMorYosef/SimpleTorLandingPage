@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-import 'package:management_system_app/ui/animations/enter_animation.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/ui/animations/enter_animation.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 import '../../../../app_const/app_sizes.dart';

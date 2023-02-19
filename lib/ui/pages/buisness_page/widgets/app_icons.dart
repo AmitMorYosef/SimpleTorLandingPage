@@ -3,37 +3,31 @@ import 'dart:io';
 import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:management_system_app/services/in_app_services.dart/app_launcher.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_toast.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/services/in_app_services.dart/app_launcher.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_toast.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../../app_const/app_sizes.dart';
 import '../../../../app_const/platform.dart';
 import '../../../../app_statics.dart/settings_data.dart';
-import '../../../../app_statics.dart/user_data.dart';
 import '../../../../utlis/general_utlis.dart';
-import '../../../general_widgets/buttons/custome_add_button.dart';
-import '../../../general_widgets/intro/lib/flutter_intro.dart';
 import '../../../helpers/fonts_helper.dart';
-import '../../settings_page/pages/app_details.dart';
 
 // ignore: must_be_immutable
 class AppIcons extends StatelessWidget {
   final bool editMode;
   final double? maxWidth;
   final double ratio;
-  final Intro? intro;
-  AppIcons(
-      {super.key,
-      this.editMode = false,
-      this.maxWidth,
-      this.ratio = 1,
-      this.intro});
+  AppIcons({
+    super.key,
+    this.editMode = false,
+    this.maxWidth,
+    this.ratio = 1,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      key: intro == null ? null : intro!.keys[2],
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
@@ -148,14 +142,6 @@ class AppIcons extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(bottom: 10 * ratio),
-          child: CustomeAddButton(
-            showWidget: editMode && UserData.getPermission() == 2,
-            onTap: () => Navigator.push(
-                context, MaterialPageRoute(builder: (_) => AppDetails())),
-          ),
-        )
       ],
     );
   }

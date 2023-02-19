@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:management_system_app/providers/login_provider.dart';
-import 'package:management_system_app/server_variables.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_container.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/providers/login_provider.dart';
+import 'package:simple_tor_web/server_variables.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_container.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 

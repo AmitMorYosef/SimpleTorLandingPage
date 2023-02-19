@@ -1,18 +1,15 @@
 import 'package:flutter/cupertino.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/providers/booking_provider.dart';
-import 'package:management_system_app/providers/language_provider.dart';
-import 'package:management_system_app/providers/links_provider.dart';
-import 'package:management_system_app/providers/loading_provider.dart';
-import 'package:management_system_app/providers/login_provider.dart';
-import 'package:management_system_app/providers/manager_provider.dart';
-import 'package:management_system_app/providers/payments_provider.dart';
-import 'package:management_system_app/providers/settings_provider.dart';
-import 'package:management_system_app/providers/subscription_provider.dart';
-import 'package:management_system_app/providers/theme_provider.dart';
-import 'package:management_system_app/providers/user_provider.dart';
-import 'package:management_system_app/providers/worker_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/providers/booking_provider.dart';
+import 'package:simple_tor_web/providers/language_provider.dart';
+import 'package:simple_tor_web/providers/links_provider.dart';
+import 'package:simple_tor_web/providers/loading_provider.dart';
+import 'package:simple_tor_web/providers/login_provider.dart';
+import 'package:simple_tor_web/providers/payments_provider.dart';
+import 'package:simple_tor_web/providers/settings_provider.dart';
+import 'package:simple_tor_web/providers/user_provider.dart';
+import 'package:simple_tor_web/providers/worker_provider.dart';
 
 import '../main.dart';
 import '../providers/device_provider.dart';
@@ -28,13 +25,10 @@ class UiManager {
     */
     if (provider == Providers.login) {
       updatesQueue = {Providers.login};
-    } else if (provider == Providers.theme) {
-      updatesQueue = {Providers.theme};
     } else if (provider == Providers.language) {
       updatesQueue = {Providers.language};
     } else {
-      if (updatesQueue.contains(Providers.theme) ||
-          updatesQueue.contains(Providers.loading) || // update all screens...
+      if (updatesQueue.contains(Providers.loading) || // update all screens...
           updatesQueue.contains(Providers.language) ||
           updatesQueue.contains(Providers.login)) return;
       logger.i("adding the provider $provider to queue");
@@ -67,9 +61,7 @@ class UiManager {
         case Providers.login:
           MyApp.mainContext!.read<LogginProvider>().updateScreen();
           break;
-        case Providers.theme:
-          MyApp.mainContext!.read<ThemeProvider>().updateScreen();
-          break;
+
         case Providers.language:
           MyApp.mainContext!.read<LanguageProvider>().updateScreen();
           break;
@@ -82,9 +74,7 @@ class UiManager {
         case Providers.worker:
           context!.read<WorkerProvider>().updateScreen();
           break;
-        case Providers.manager:
-          context!.read<ManagerProvider>().updateScreen();
-          break;
+
         case Providers.settings:
           context!.read<SettingsProvider>().updateScreen();
           break;
@@ -97,9 +87,7 @@ class UiManager {
         case Providers.device:
           context!.read<DeviceProvider>().updateScreen();
           break;
-        case Providers.purchase:
-          context!.read<SubscriptionProvider>().updateScreen();
-          break;
+
         case Providers.payments:
           context!.read<PaymentsProvider>().updateScreen();
           break;

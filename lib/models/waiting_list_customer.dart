@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:management_system_app/models/user_model.dart';
+import 'package:simple_tor_web/models/user_model.dart';
 
 import '../app_const/gender.dart';
 

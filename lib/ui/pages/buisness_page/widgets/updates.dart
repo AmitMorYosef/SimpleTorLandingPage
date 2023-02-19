@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_container.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_container.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../../app_const/app_sizes.dart';
 import '../../../../app_const/purchases.dart';
@@ -10,17 +10,16 @@ import '../../../../app_statics.dart/settings_data.dart';
 import '../../../../app_statics.dart/user_data.dart';
 import '../../../../models/update_model.dart';
 import '../../../../providers/settings_provider.dart';
-import '../../../../utlis/general_utlis.dart';
-import '../../../general_widgets/buttons/custome_add_button.dart';
-import '../../../general_widgets/intro/lib/flutter_intro.dart';
 import '../../../helpers/fonts_helper.dart';
-import '../../settings_page/pages/updates_management_page/app_updates.dart';
 
 class Updates extends StatefulWidget {
   final bool editMode;
   final double ratio;
-  final Intro? intro;
-  Updates({required this.editMode, this.ratio = 1, this.intro});
+
+  Updates({
+    required this.editMode,
+    this.ratio = 1,
+  });
   @override
   State<StatefulWidget> createState() {
     return _UpdatesState();
@@ -52,7 +51,6 @@ class _UpdatesState extends State<Updates> {
     }
 
     return CustomContainer(
-      key: widget.intro == null ? null : widget.intro!.keys[0],
       width: gWidth * 0.9 * widget.ratio,
       image: null,
       borderWidth: 2,
@@ -168,23 +166,6 @@ class _UpdatesState extends State<Updates> {
               ),
             ),
           ]),
-          Positioned(
-            bottom: 10,
-            left: 10,
-            child: CustomeAddButton(
-              showWidget: widget.editMode && UserData.getPermission() == 2,
-              onTap: () {
-                if (SettingsData.businessSubtype == SubType.basic) {
-                  UserData.getPermission() == 2
-                      ? funcNotAvailableManagerToast(context)
-                      : funcNotAvailableClientToast(context);
-                  return;
-                }
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => AppUpdates()));
-              },
-            ),
-          ),
         ],
       ),
     );

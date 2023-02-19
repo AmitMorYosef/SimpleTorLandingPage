@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/load_app.dart' deferred as appLoader;
+import 'package:simple_tor_web/ui/load_app.dart' deferred as appLoader;
 
 class MiddlePage extends StatelessWidget {
   const MiddlePage({super.key});

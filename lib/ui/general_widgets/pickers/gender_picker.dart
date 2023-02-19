@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/general_widgets/buttons/info_button.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/ui/general_widgets/buttons/info_button.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../app_const/app_sizes.dart';
 import '../../../app_const/gender.dart';

@@ -1,4 +1,4 @@
-import 'package:management_system_app/utlis/times_utlis.dart';
+import 'package:simple_tor_web/utlis/times_utlis.dart';
 
 import '../app_const/application_general.dart';
 import '../app_statics.dart/worker_data.dart';

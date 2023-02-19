@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/providers/links_provider.dart';
-import 'package:management_system_app/providers/settings_provider.dart';
-import 'package:management_system_app/providers/user_provider.dart';
-import 'package:management_system_app/services/errors_service/loading.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/providers/links_provider.dart';
+import 'package:simple_tor_web/providers/settings_provider.dart';
+import 'package:simple_tor_web/providers/user_provider.dart';
+import 'package:simple_tor_web/services/errors_service/loading.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 

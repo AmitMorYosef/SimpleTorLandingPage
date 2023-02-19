@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/general_widgets/pickers/pick_phone_number.dart';
-import 'package:management_system_app/ui/pages/login_page/widgets/opt_instructions.dart';
-import 'package:management_system_app/ui/pages/login_page/widgets/otp_text_field.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/ui/general_widgets/pickers/pick_phone_number.dart';
+import 'package:simple_tor_web/ui/pages/login_page/widgets/opt_instructions.dart';
+import 'package:simple_tor_web/ui/pages/login_page/widgets/otp_text_field.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:provider/provider.dart';

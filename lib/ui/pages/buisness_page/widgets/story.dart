@@ -1,20 +1,15 @@
-import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/general_widgets/dialogs/make_sure_dialog.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/stroy_card.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/stroy_card.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../../app_const/app_sizes.dart';
 import '../../../../app_const/purchases.dart';
-import '../../../../app_const/resources.dart';
 import '../../../../app_statics.dart/settings_data.dart';
 import '../../../../app_statics.dart/user_data.dart';
 import '../../../../models/worker_model.dart';
 import '../../../../providers/settings_provider.dart';
-import '../../../general_widgets/intro/lib/flutter_intro.dart';
-import '../../../general_widgets/loading_widgets/loading_dialog.dart';
 import '../../../helpers/fonts_helper.dart';
 
 // ignore: must_be_immutable
@@ -22,9 +17,13 @@ class Story extends StatelessWidget {
   late SettingsProvider settingsProvider;
   final double ratio;
   final bool editMode;
-  final Intro? intro;
+
   static Map<String, Map<String, String>> imagesToDelete = {};
-  Story({super.key, required this.editMode, this.ratio = 1, this.intro});
+  Story({
+    super.key,
+    required this.editMode,
+    this.ratio = 1,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +80,6 @@ class Story extends StatelessWidget {
     }
 
     return Column(
-      key: intro == null ? null : intro!.keys[1],
       children: [
         Container(
           width: gWidth * ratio,
@@ -96,7 +94,6 @@ class Story extends StatelessWidget {
                       color: Theme.of(context).colorScheme.secondary),
                 ),
               ),
-              Positioned(left: 10, child: StoryDeleteButton())
             ],
           ),
         ),
@@ -187,68 +184,5 @@ class Story extends StatelessWidget {
               ),
       ],
     );
-  }
-}
-
-class StoryDeleteButton extends StatefulWidget {
-  static Function? onChanged;
-  StoryDeleteButton({super.key});
-
-  @override
-  State<StoryDeleteButton> createState() => _StoryDeleteButtonState();
-}
-
-class _StoryDeleteButtonState extends State<StoryDeleteButton> {
-  late SettingsProvider settingsProvider;
-  @override
-  void initState() {
-    super.initState();
-    StoryDeleteButton.onChanged = onChanged;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    settingsProvider = context.read<SettingsProvider>();
-    return Story.imagesToDelete.isEmpty
-        ? SizedBox()
-        : Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: BouncingWidget(
-                child: Icon(Icons.delete),
-                onPressed: () async {
-                  if (await makeSureDialog(
-                          context, translate("deletePickedImages")) ==
-                      true) {
-                    await Loading(
-                            context: context,
-                            navigator: Navigator.of(context),
-                            future: deleteAllImages(context),
-                            animation: deleteAnimation,
-                            msg: Story.imagesToDelete.length > 1
-                                ? translate("imagesDeletion")
-                                : translate("deletedImage"))
-                        .dialog();
-                  }
-                }),
-          );
-  }
-
-  Future<bool> deleteAllImages(BuildContext context) async {
-    bool resp = true;
-    await Future.forEach(Story.imagesToDelete.keys, (imageId) async {
-      resp = resp &&
-          await settingsProvider.deleteStoryImage(
-            context,
-            Story.imagesToDelete[imageId]!["workerPhone"]!,
-            imageId,
-            Story.imagesToDelete[imageId]!["imageUrl"]!,
-          );
-    });
-    Story.imagesToDelete = {};
-    return resp;
-  }
-
-  void onChanged() {
-    setState(() {});
   }
 }

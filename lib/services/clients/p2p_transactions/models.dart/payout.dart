@@ -14,8 +14,8 @@
       "metadata": {"merchant_defined": true}
  */
 
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/beneficiary.dart';
-import 'package:management_system_app/services/clients/p2p_transactions/models.dart/sender.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/beneficiary.dart';
+import 'package:simple_tor_web/services/clients/p2p_transactions/models.dart/sender.dart';
 
 class Payout {
   String beneficiary_country,

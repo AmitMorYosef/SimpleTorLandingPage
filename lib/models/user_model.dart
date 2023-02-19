@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:management_system_app/models/bank_details.dart';
-import 'package:management_system_app/models/notification_topic.dart';
-import 'package:management_system_app/models/preview_model.dart';
+import 'package:simple_tor_web/models/notification_topic.dart';
+import 'package:simple_tor_web/models/preview_model.dart';
 
 import '../app_const/gender.dart';
 import '../app_const/limitations.dart';
@@ -18,7 +17,6 @@ class User {
   late int limitOfBuisnesses;
   Map<String, int> permission = {};
   late List<String> myBuisnessesIds = [];
-  BankDetails? bankDetails;
   List<String> storyLikes = [];
   Gender gender = Gender.anonymous;
   Map<String, Booking> bookings = {};
@@ -42,7 +40,6 @@ class User {
       this.revenueCatId = "",
       this.limitOfBuisnesses = 1,
       this.anonymousDocId = '',
-      this.bankDetails,
       this.gender = Gender.anonymous,
       required this.lastVisitedBuisnesses,
       required this.lastVisitedBuisnessesRemoved,
@@ -97,9 +94,7 @@ class User {
             element;
       });
     });
-    bankDetails = json["bankDetails"] == null
-        ? null
-        : BankDetails.fromJson(json["bankDetails"]);
+
     if (json["previews"] != null) {
       json["previews"].forEach((businessId, previewJson) {
         previews[businessId] = Preview.fromJson(previewJson);
@@ -157,9 +152,6 @@ class User {
       });
     }
 
-    bankDetails = json["bankDetails"] == null
-        ? null
-        : BankDetails.fromJson(json["bankDetails"]);
     createdAt = DateTime.parse(json['createdAt']);
   }
 
@@ -238,9 +230,7 @@ class User {
     data['lastVisitedBuisnesses'] = lastVisitedBuisnesses;
     data['lastVisitedBuisnessesRemoved'] = lastVisitedBuisnessesRemoved;
     data['storyLikes'] = storyLikes;
-    if (bankDetails != null) {
-      data["bankDetails"] = bankDetails!.toJson();
-    }
+
     data["previews"] = {};
     previews.forEach((businessId, previewJson) {
       data["previews"][businessId] = previewJson;

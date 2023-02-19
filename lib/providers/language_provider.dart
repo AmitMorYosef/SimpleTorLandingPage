@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/app_statics.dart/subscription_data.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
 
 import '../app_const/application_general.dart';
 import '../app_const/device_keys.dart';
@@ -15,7 +14,7 @@ class LanguageProvider extends ChangeNotifier {
   Future<void> changeLaguage(String languageCode) async {
     if (languageCode == LanguageData.currentLaguageCode) return;
     if (!this.supportedLanguages.containsKey(languageCode)) return;
-    SubscriptionData.initDetails();
+
     SecuredStorageClient()
         .updateKeyInDeviceStorage(key: deviceLanguageKey, value: languageCode);
     LanguageData.currentLaguageCode = languageCode;

@@ -1,14 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:image_cropper/image_cropper.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/story.dart';
-import 'package:management_system_app/ui/pages/buisness_page/widgets/story_dialog.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/provider.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/story.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/story_dialog.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../../app_const/app_sizes.dart';
 import '../../../../app_const/gender.dart';
@@ -18,12 +14,9 @@ import '../../../../app_const/resources.dart';
 import '../../../../app_statics.dart/settings_data.dart';
 import '../../../../app_statics.dart/user_data.dart';
 import '../../../../models/worker_model.dart';
-import '../../../../providers/settings_provider.dart';
 import '../../../../utlis/general_utlis.dart';
 import '../../../../utlis/image_utlis.dart';
-import '../../../general_widgets/custom_widgets/custom_toast.dart';
 import '../../../general_widgets/dialogs/genral_dialog.dart';
-import '../../../general_widgets/loading_widgets/loading_dialog.dart';
 import '../../../helpers/fonts_helper.dart';
 
 class StoryCard extends StatefulWidget {
@@ -145,7 +138,7 @@ class _StoryCardState extends State<StoryCard> {
                                             : Story.imagesToDelete
                                                 .remove(widget.imageId);
                                       });
-                                      StoryDeleteButton.onChanged!();
+                                      //StoryDeleteButton.onChanged!();
                                     }
                                   },
                                 ),
@@ -197,8 +190,9 @@ class _StoryCardState extends State<StoryCard> {
                             onPressed: () => Navigator.pop(context),
                             child: Text(translate('ok')))
                       ]);
-                } else
-                  uploadPhotos();
+                }
+                //else
+                //uploadPhotos();
               },
               child: DottedBorder(
                 dashPattern: [25],
@@ -235,59 +229,5 @@ class _StoryCardState extends State<StoryCard> {
                     )),
               ),
             ));
-  }
-
-  Future<void> uploadPhotos() async {
-    final storyPhotosLimit =
-        SettingsData.settings.limits[BuisnessLimitations.storyPhotos]!;
-    int storyAmount = 0;
-    SettingsData.storyCacheImages
-        .forEach((workerPhone, images) => storyAmount += images.length);
-    if (storyAmount >= storyPhotosLimit) {
-      CustomToast(
-        context: context,
-        msg: "${translate('storyCrossLimit')} - $storyPhotosLimit",
-        gravity: ToastGravity.BOTTOM,
-      ).init();
-      return;
-    }
-    final ImagePicker _picker = ImagePicker();
-    List<XFile> images = await _picker.pickMultiImage(
-        maxHeight: 1024, maxWidth: 1024, imageQuality: 100);
-    List<XFile> cropImages = [];
-    if (storyAmount + images.length > storyPhotosLimit) {
-      CustomToast(
-        context: context,
-        msg: "${translate('storyCrossLimit')} - $storyPhotosLimit",
-        gravity: ToastGravity.BOTTOM,
-      ).init();
-      return;
-    }
-
-    for (var image in images) {
-      XFile? crepped = await cropImage(image, CropStyle.rectangle, context,
-          height: 1024,
-          width: 1024,
-          loacRatio: true,
-          aspectRatio: CropAspectRatio(
-              ratioX: 1, ratioY: storyImagesRatioY / storyImagesRatioX));
-      if (crepped != null) cropImages.add(crepped);
-    }
-    images = cropImages;
-    if (images.length == 0) {
-      CustomToast(context: context, msg: translate("noPickedImages")).init();
-      return;
-    }
-    await Loading(
-            context: context,
-            navigator: Navigator.of(context),
-            future: context
-                .read<SettingsProvider>()
-                .uploadStoryImages(context, images, UserData.user.phoneNumber),
-            animation: successAnimation,
-            msg: images.length == 1
-                ? translate('successfullyUploadedImage')
-                : translate('successfullyUploadedImages'))
-        .dialog();
   }
 }

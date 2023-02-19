@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/services/errors_service/messages.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/services/errors_service/messages.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../app_const/app_sizes.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/utlis/general_utlis.dart';
+import 'package:simple_tor_web/utlis/general_utlis.dart';
 
 // ignore: must_be_immutable
 class CustomTextFormField extends StatefulWidget {

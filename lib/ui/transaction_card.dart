@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/checkout_page.dart';
+import 'package:simple_tor_web/ui/checkout_page.dart';
 
 import '../app_const/app_sizes.dart';
 import '../services/clients/p2p_transactions/rapyd_client.dart';

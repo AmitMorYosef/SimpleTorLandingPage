@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/models/notification_topic.dart';
-import 'package:management_system_app/providers/user_provider.dart';
-import 'package:management_system_app/ui/animations/rotate_animation.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_container.dart';
-import 'package:management_system_app/utlis/general_utlis.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_tor_web/models/notification_topic.dart';
+import 'package:simple_tor_web/providers/user_provider.dart';
+import 'package:simple_tor_web/ui/animations/rotate_animation.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_container.dart';
+import 'package:simple_tor_web/utlis/general_utlis.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 
 import '../../../../app_const/app_sizes.dart';
 import '../../../../app_const/notification.dart';
@@ -72,24 +72,28 @@ class WaitingListButton extends StatelessWidget {
           return;
         }
         buttonIndicator.load!(
-          startState: isSub()
-              ? buttonWidget(context, translate('leveWaitingList'))
-              : buttonWidget(context, translate('joinWaitingList')),
-          endState: isSub()
-              ? buttonWidget(context, translate('joinWaitingList'))
-              : buttonWidget(context, translate('leveWaitingList')),
-          future: () => isSub()
-              ? userProvider.unSubNotification(
-                  topicId: this.topic.toTopicStr(),
-                  sort: NotifySorts.waitingList)
-              : userProvider.subToNotification(
-                  worker: worker,
-                  date: date,
-                  userName: UserData.user.name,
-                  userPhone: UserData.user.phoneNumber,
-                  notificationTopicObject: this.topic,
-                  sort: NotifySorts.waitingList),
-        );
+            startState: isSub()
+                ? buttonWidget(context, translate('leveWaitingList'))
+                : buttonWidget(context, translate('joinWaitingList')),
+            endState: isSub()
+                ? buttonWidget(context, translate('joinWaitingList'))
+                : buttonWidget(context, translate('leveWaitingList')),
+            future: () async {
+              return true;
+            }
+
+            // => isSub()
+            //     ? userProvider.unSubNotification(
+            //         topicId: this.topic.toTopicStr(),
+            //         sort: NotifySorts.waitingList)
+            //     : userProvider.subToNotification(
+            //         worker: worker,
+            //         date: date,
+            //         userName: UserData.user.name,
+            //         userPhone: UserData.user.phoneNumber,
+            //         notificationTopicObject: this.topic,
+            //         sort: NotifySorts.waitingList),
+            );
       },
       raduis: 60,
       height: 50,

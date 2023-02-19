@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_container.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_container.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 import '../../../app_const/app_sizes.dart';

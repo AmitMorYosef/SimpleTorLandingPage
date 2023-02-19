@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/pages/booking_page/widgets/date_picker.dart';
-import 'package:management_system_app/ui/pages/booking_page/widgets/time_picker.dart';
-import 'package:management_system_app/ui/pages/booking_page/widgets/treatment_picker.dart';
-import 'package:management_system_app/ui/pages/booking_page/widgets/worker_picker.dart';
-import 'package:management_system_app/ui/ui_manager.dart';
+import 'package:simple_tor_web/ui/pages/booking_page/widgets/date_picker.dart';
+import 'package:simple_tor_web/ui/pages/booking_page/widgets/time_picker.dart';
+import 'package:simple_tor_web/ui/pages/booking_page/widgets/treatment_picker.dart';
+import 'package:simple_tor_web/ui/pages/booking_page/widgets/worker_picker.dart';
+import 'package:simple_tor_web/ui/ui_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app_const/app_sizes.dart';

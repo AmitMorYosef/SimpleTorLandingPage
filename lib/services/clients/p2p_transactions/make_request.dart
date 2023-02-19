@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
-import 'package:management_system_app/app_const/application_general.dart';
-import 'package:management_system_app/secrets.dart';
+import 'package:simple_tor_web/app_const/application_general.dart';
+import 'package:simple_tor_web/secrets.dart';
 
 class MakeRequest {
   static final MakeRequest _singleton = MakeRequest._internal();

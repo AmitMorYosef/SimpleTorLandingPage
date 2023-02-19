@@ -7,17 +7,14 @@ final logger =
     Logger(printer: PrettyPrinter(methodCount: 0), level: Level.error);
 
 enum Providers {
-  theme,
   loading,
   login,
   user,
   worker,
-  manager,
   settings,
   booking,
   links,
   device,
   language,
-  purchase,
   payments
 }

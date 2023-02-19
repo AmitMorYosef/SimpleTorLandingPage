@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/ui/general_widgets/custom_widgets/custom_container.dart';
-import 'package:management_system_app/ui/pages/login_page/widgets/get_phone_field.dart';
-import 'package:management_system_app/ui/pages/login_page/widgets/login_button.dart';
-import 'package:management_system_app/ui/pages/login_page/widgets/opt_field.dart';
+import 'package:simple_tor_web/ui/general_widgets/custom_widgets/custom_container.dart';
+import 'package:simple_tor_web/ui/pages/login_page/widgets/get_phone_field.dart';
+import 'package:simple_tor_web/ui/pages/login_page/widgets/login_button.dart';
+import 'package:simple_tor_web/ui/pages/login_page/widgets/opt_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app_const/app_sizes.dart';

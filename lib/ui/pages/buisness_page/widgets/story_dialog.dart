@@ -2,22 +2,17 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:management_system_app/models/worker_model.dart';
-import 'package:management_system_app/ui/general_widgets/loading_widgets/loading_dialog.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
 import 'package:pinch_zoom/pinch_zoom.dart';
-import 'package:provider/provider.dart';
+import 'package:simple_tor_web/models/worker_model.dart';
 
 import '../../../../app_const/app_sizes.dart';
 import '../../../../app_const/gender.dart';
 import '../../../../app_const/resources.dart';
 import '../../../../app_statics.dart/settings_data.dart';
 import '../../../../app_statics.dart/user_data.dart';
-import '../../../../providers/settings_provider.dart';
 import '../../../../utlis/image_utlis.dart';
 import '../../../animations/hero_dialog.dart';
 import '../../../animations/like_animation.dart';
-import '../../../general_widgets/dialogs/genral_dialog.dart';
 
 class StoryDialog {
   String workerPhone;
@@ -217,7 +212,7 @@ class _ImageCardState extends State<ImageCard> {
         )),
         Positioned(right: 15, bottom: 15, child: likeWidget),
         workerPhoto(),
-        widget.editMode ? deleteButton() : SizedBox()
+        // widget.editMode ? deleteButton() : SizedBox()
       ],
     );
   }
@@ -237,78 +232,78 @@ class _ImageCardState extends State<ImageCard> {
         : SizedBox();
   }
 
-  Widget deleteButton() {
-    return UserData.getPermission() == 2 ||
-            UserData.user.phoneNumber == worker!.phone
-        ? Positioned(
-            left: 15,
-            top: 15,
-            child: GestureDetector(
-              onTap: () async {
-                if (await deleteDialog(context, widget.images[imageId]!) ==
-                    "OK") {
-                  Navigator.pop(context);
-                  await Loading(
-                          context: widget.ancestorContext,
-                          navigator: Navigator.of(widget.ancestorContext),
-                          future:
-                              context.read<SettingsProvider>().deleteStoryImage(
-                                    widget.ancestorContext,
-                                    worker!.phone,
-                                    imageId,
-                                    widget.images[imageId]!.imageUrl,
-                                  ),
-                          animation: deleteAnimation,
-                          msg: translate("deletedImage"))
-                      .dialog();
-                }
-              },
-              child: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).colorScheme.background),
-                  child: Padding(
-                    padding: const EdgeInsets.all(3.0),
-                    child: Center(child: Icon(Icons.delete)),
-                  )),
-            ))
-        : SizedBox();
-  }
+  // Widget deleteButton() {
+  //   return UserData.getPermission() == 2 ||
+  //           UserData.user.phoneNumber == worker!.phone
+  //       ? Positioned(
+  //           left: 15,
+  //           top: 15,
+  //           child: GestureDetector(
+  //             onTap: () async {
+  //               if (await deleteDialog(context, widget.images[imageId]!) ==
+  //                   "OK") {
+  //                 Navigator.pop(context);
+  //                 await Loading(
+  //                         context: widget.ancestorContext,
+  //                         navigator: Navigator.of(widget.ancestorContext),
+  //                         future:
+  //                             context.read<SettingsProvider>().deleteStoryImage(
+  //                                   widget.ancestorContext,
+  //                                   worker!.phone,
+  //                                   imageId,
+  //                                   widget.images[imageId]!.imageUrl,
+  //                                 ),
+  //                         animation: deleteAnimation,
+  //                         msg: translate("deletedImage"))
+  //                     .dialog();
+  //               }
+  //             },
+  //             child: Container(
+  //                 decoration: BoxDecoration(
+  //                     shape: BoxShape.circle,
+  //                     color: Theme.of(context).colorScheme.background),
+  //                 child: Padding(
+  //                   padding: const EdgeInsets.all(3.0),
+  //                   child: Center(child: Icon(Icons.delete)),
+  //                 )),
+  //           ))
+  //       : SizedBox();
+  // }
 
-  Future<String> deleteDialog(
-      BuildContext context, CachedNetworkImage image) async {
-    return await genralDialog(
-      context: context,
-      title: translate("deleteImage"),
-      content: SizedBox(
-          height: gHeight * 0.3,
-          child: Column(
-            children: [
-              Text(
-                translate('confirmDeleteImage'),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: SizedBox(
-                      height: gHeight * 0.2, width: gWidth * 0.2, child: image))
-            ],
-          )),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () => Navigator.pop(context, 'Cancel'),
-          child: Text(translate('cancel')),
-        ),
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context, 'OK');
-          },
-          child: Text(translate('delete')),
-        ),
-      ],
-    );
-  }
+  // Future<String> deleteDialog(
+  //     BuildContext context, CachedNetworkImage image) async {
+  //   return await genralDialog(
+  //     context: context,
+  //     title: translate("deleteImage"),
+  //     content: SizedBox(
+  //         height: gHeight * 0.3,
+  //         child: Column(
+  //           children: [
+  //             Text(
+  //               translate('confirmDeleteImage'),
+  //               textAlign: TextAlign.center,
+  //             ),
+  //             SizedBox(
+  //               height: 20,
+  //             ),
+  //             ClipRRect(
+  //                 borderRadius: BorderRadius.all(Radius.circular(10)),
+  //                 child: SizedBox(
+  //                     height: gHeight * 0.2, width: gWidth * 0.2, child: image))
+  //           ],
+  //         )),
+  //     actions: <Widget>[
+  //       TextButton(
+  //         onPressed: () => Navigator.pop(context, 'Cancel'),
+  //         child: Text(translate('cancel')),
+  //       ),
+  //       TextButton(
+  //         onPressed: () {
+  //           Navigator.pop(context, 'OK');
+  //         },
+  //         child: Text(translate('delete')),
+  //       ),
+  //     ],
+  //   );
+  // }
 }

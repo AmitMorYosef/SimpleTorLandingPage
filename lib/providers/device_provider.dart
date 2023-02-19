@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:management_system_app/services/clients/secured_storage_client.dart';
+import 'package:simple_tor_web/services/clients/secured_storage_client.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../app_const/application_general.dart';

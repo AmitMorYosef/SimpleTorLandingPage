@@ -5,9 +5,9 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:management_system_app/ui/general_widgets/dialogs/genral_dialog.dart';
-import 'package:management_system_app/utlis/image_utlis.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
+import 'package:simple_tor_web/ui/general_widgets/dialogs/genral_dialog.dart';
+import 'package:simple_tor_web/utlis/image_utlis.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../../app_const/app_sizes.dart';

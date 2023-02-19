@@ -5,8 +5,6 @@ import '../../app_const/app_sizes.dart';
 import '../../app_statics.dart/user_data.dart';
 import '../../utlis/string_utlis.dart';
 import '../helpers/fonts_helper.dart';
-import '../pages/settings_page/pages/products_page/products_management.dart';
-import 'buttons/custome_add_button.dart';
 
 class OpenProductsPageShorcut extends StatelessWidget {
   const OpenProductsPageShorcut({super.key});
@@ -35,13 +33,6 @@ class OpenProductsPageShorcut extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CustomeAddButton(
-                      color: Colors.transparent,
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => ProductsManagement())),
-                    ),
                     Text(
                       translate("EditProducts"),
                       textAlign: TextAlign.center,

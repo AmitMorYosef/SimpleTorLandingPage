@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:management_system_app/services/errors_service/app_errors.dart';
-import 'package:management_system_app/services/errors_service/messages.dart';
+import 'package:simple_tor_web/services/errors_service/app_errors.dart';
+import 'package:simple_tor_web/services/errors_service/messages.dart';
 
 import '../../../app_const/application_general.dart';
 import '../../../app_const/db.dart';

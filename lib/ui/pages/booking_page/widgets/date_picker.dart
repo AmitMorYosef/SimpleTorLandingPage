@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:management_system_app/utlis/string_utlis.dart';
-import 'package:management_system_app/utlis/times_utlis.dart';
+import 'package:simple_tor_web/utlis/string_utlis.dart';
+import 'package:simple_tor_web/utlis/times_utlis.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../app_const/app_sizes.dart';

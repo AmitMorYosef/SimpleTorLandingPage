@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:management_system_app/ui/pages/buisness_page/widgets/fade_widget.dart';
+import 'package:simple_tor_web/ui/pages/buisness_page/widgets/fade_widget.dart';
 
 import '../../../../app_const/app_sizes.dart';
 import '../../../../app_const/display.dart';
@@ -9,10 +9,7 @@ import '../../../../app_const/resources.dart';
 import '../../../../app_statics.dart/screens_data.dart';
 import '../../../../app_statics.dart/settings_data.dart';
 import '../../../../app_statics.dart/theme_data.dart';
-import '../../../../app_statics.dart/user_data.dart';
 import '../../../../providers/settings_provider.dart';
-import '../../../general_widgets/buttons/custome_add_button.dart';
-import '../../settings_page/pages/changing_photo_mangement.dart';
 
 class AnimatedImages extends StatefulWidget {
   final bool editMode;
@@ -66,15 +63,6 @@ class AnimatedImagesState extends State<AnimatedImages> {
           color: Theme.of(context).colorScheme.background,
         ),
         Align(alignment: Alignment.bottomCenter, child: FadeWidget()),
-        Positioned(
-          bottom: 10,
-          left: 20,
-          child: CustomeAddButton(
-            showWidget: widget.editMode && UserData.getPermission() == 2,
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (_) => ChangingPhotoMangement())),
-          ),
-        )
       ],
     );
   }
